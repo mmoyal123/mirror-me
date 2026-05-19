@@ -3303,17 +3303,74 @@ footer{
     .mm-home-strip-card img{position:absolute; inset:0;}
     .mm-home-strip-card{position:relative;}
     </style><style>
-/* V59 — mobile menu hard fix */
+/* V60 — mobile burger click zone + menu overlay definitive fix */
 @media (max-width: 920px){
+  body.menu-open,
   body.mm-menu-open{
     overflow:hidden !important;
   }
+
+  nav#nav,
+  #nav{
+    position:sticky !important;
+    top:0 !important;
+    z-index:10000 !important;
+  }
+
+  .burger{
+    position:relative !important;
+    z-index:10005 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:58px !important;
+    height:58px !important;
+    min-width:58px !important;
+    min-height:58px !important;
+    cursor:pointer !important;
+    pointer-events:auto !important;
+    background:transparent !important;
+    touch-action:manipulation !important;
+    -webkit-tap-highlight-color:transparent !important;
+  }
+
+  .burger::before{
+    content:"" !important;
+    position:absolute !important;
+    inset:-12px !important;
+    z-index:1 !important;
+  }
+
+  .burger span{
+    position:absolute !important;
+    z-index:2 !important;
+    display:block !important;
+    width:24px !important;
+    height:1.5px !important;
+    background:#1A1816 !important;
+    transform-origin:center !important;
+    transition:transform .25s ease, opacity .2s ease !important;
+  }
+
+  .burger span:nth-child(1){ transform:translateY(-7px) !important; }
+  .burger span:nth-child(2){ transform:translateY(0) !important; }
+  .burger span:nth-child(3){ transform:translateY(7px) !important; }
+
+  body.menu-open .burger span:nth-child(1),
+  body.mm-menu-open .burger span:nth-child(1){ transform:rotate(45deg) !important; }
+
+  body.menu-open .burger span:nth-child(2),
+  body.mm-menu-open .burger span:nth-child(2){ opacity:0 !important; }
+
+  body.menu-open .burger span:nth-child(3),
+  body.mm-menu-open .burger span:nth-child(3){ transform:rotate(-45deg) !important; }
+
   .nav-links{
     position:fixed !important;
-    top:88px !important;
+    top:96px !important;
     left:18px !important;
     right:18px !important;
-    z-index:9998 !important;
+    z-index:10004 !important;
     display:none !important;
     flex-direction:column !important;
     gap:0 !important;
@@ -3321,17 +3378,25 @@ footer{
     border:1px solid rgba(26,24,22,.12) !important;
     border-radius:24px !important;
     background:rgba(247,245,240,.98) !important;
-    box-shadow:0 22px 70px rgba(26,24,22,.16) !important;
+    box-shadow:0 24px 80px rgba(26,24,22,.18) !important;
     backdrop-filter:blur(18px) !important;
     -webkit-backdrop-filter:blur(18px) !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
   }
+
+  body.menu-open .nav-links,
   body.mm-menu-open .nav-links{
     display:flex !important;
   }
+
   .nav-links li{
+    display:block !important;
     width:100% !important;
     list-style:none !important;
   }
+
   .nav-links a{
     display:block !important;
     width:100% !important;
@@ -3340,38 +3405,14 @@ footer{
     letter-spacing:.16em !important;
     text-transform:uppercase !important;
     color:#1A1816 !important;
-    border-bottom:1px solid rgba(26,24,22,.08) !important;
     opacity:1 !important;
     visibility:visible !important;
+    border-bottom:1px solid rgba(26,24,22,.08) !important;
   }
+
   .nav-links li:last-child a{
     border-bottom:0 !important;
   }
-  .burger{
-    position:relative !important;
-    z-index:10000 !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    width:58px !important;
-    height:58px !important;
-    cursor:pointer !important;
-    pointer-events:auto !important;
-  }
-  .burger span{
-    display:block !important;
-    width:24px !important;
-    height:1.5px !important;
-    background:#1A1816 !important;
-    position:absolute !important;
-    transition:transform .25s ease, opacity .2s ease !important;
-  }
-  .burger span:nth-child(1){ transform:translateY(-7px); }
-  .burger span:nth-child(2){ transform:translateY(0); }
-  .burger span:nth-child(3){ transform:translateY(7px); }
-  body.mm-menu-open .burger span:nth-child(1){ transform:rotate(45deg); }
-  body.mm-menu-open .burger span:nth-child(2){ opacity:0 !important; }
-  body.mm-menu-open .burger span:nth-child(3){ transform:rotate(-45deg); }
 }
 </style></head><body><div class="cursor" id="cursor"></div><div aria-hidden="true" class="ambient-motion"></div><main class="link-page"><div class="link-bg">MIRROR</div><section class="link-box reveal">
 <h1 class="link-title">MIRROR<em>ME</em></h1><p class="link-sub">Pointer ce que tu as appris à devenir sous condition, pour retrouver une façon plus digne, plus libre et plus juste d’être en relation.</p><div class="link-list"><a class="link-item primary" href="https://chatgpt.com/g/g-6a031f13464c819196a2836686fff251-mirror-me" target="_blank"><span><span class="link-item-title">Commencer avec MIRROR</span><span class="link-item-note">conversation immédiate</span></span><span>→</span></a><a class="link-item" href="https://tally.so/r/RGZOQj" target="_blank"><span><span class="link-item-title">Demander un accompagnement</span><span class="link-item-note">questionnaire obligatoire</span></span><span>→</span></a><a class="link-item" href="coaching.html"><span><span class="link-item-title">Lire la méthode</span><span class="link-item-note">Brise Tes Chaînes</span></span><span>→</span></a><a class="link-item" href="territoires.html"><span><span class="link-item-title">Explorer les territoires</span><span class="link-item-note">famille, corps, travail, argent...</span></span><span>→</span></a><a class="link-item" href="brise-tes-chaines-guide.pdf" target="_blank"><span><span class="link-item-title">Guide Brise Tes Chaînes</span><span class="link-item-note">ebook + exercice</span></span><span>→</span></a><a class="link-item" href="https://soul-mirror-system.lovable.app/" target="_blank"><span><span class="link-item-title">Accéder à MIRROR Me</span><span class="link-item-note">outil structuré Lovable</span></span><span>→</span></a><a class="link-item" href="https://www.instagram.com/mickaelmoyal_" target="_blank"><span><span class="link-item-title">Instagram</span><span class="link-item-note">@mickaelmoyal_</span></span><span>→</span></a><a class="link-item" href="https://www.linkedin.com/in/mickael-moyal-0a6518297" target="_blank"><span><span class="link-item-title">LinkedIn</span><span class="link-item-note">profil professionnel</span></span><span>→</span></a></div></section></main><script>
@@ -3458,47 +3499,73 @@ document.querySelectorAll('.reveal,.hero-bar,.page-bar').forEach(el=>obs.observe
 })();
 </script>
 
-<script id="v59-mobile-menu-fix">
+
+<script id="v60-mobile-menu-active">
 (function(){
-  function ready(fn){
-    if(document.readyState !== 'loading'){ fn(); }
-    else { document.addEventListener('DOMContentLoaded', fn); }
-  }
-  ready(function(){
-    var burger = document.querySelector('.burger');
+  function init(){
+    var burgers = document.querySelectorAll('.burger');
     var navLinks = document.querySelector('.nav-links');
-    if(!burger || !navLinks) return;
 
-    burger.setAttribute('type','button');
-    burger.setAttribute('aria-label','Ouvrir le menu');
-    burger.setAttribute('aria-expanded','false');
+    if(!burgers.length || !navLinks) return;
 
-    function closeMenu(){
-      document.body.classList.remove('mm-menu-open');
-      burger.setAttribute('aria-expanded','false');
-    }
-    function toggleMenu(e){
-      if(e){ e.preventDefault(); e.stopPropagation(); }
-      var isOpen = document.body.classList.toggle('mm-menu-open');
-      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    function setOpen(open){
+      document.body.classList.toggle('menu-open', open);
+      document.body.classList.toggle('mm-menu-open', open);
+      burgers.forEach(function(btn){
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
     }
 
-    burger.onclick = toggleMenu;
+    function toggle(e){
+      if(e){
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      setOpen(!document.body.classList.contains('menu-open'));
+      return false;
+    }
 
-    navLinks.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', closeMenu);
+    burgers.forEach(function(btn){
+      btn.setAttribute('type','button');
+      btn.setAttribute('role','button');
+      btn.setAttribute('aria-label','Ouvrir le menu');
+      btn.setAttribute('aria-expanded','false');
+
+      if(btn.querySelectorAll('span').length < 3){
+        btn.innerHTML = '<span></span><span></span><span></span>';
+      }
+
+      btn.onclick = null;
+      btn.addEventListener('click', toggle, true);
+      btn.addEventListener('touchstart', toggle, {capture:true, passive:false});
     });
 
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape') closeMenu();
+    navLinks.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){ setOpen(false); }, true);
     });
 
     document.addEventListener('click', function(e){
-      if(!document.body.classList.contains('mm-menu-open')) return;
-      if(navLinks.contains(e.target) || burger.contains(e.target)) return;
-      closeMenu();
+      if(!document.body.classList.contains('menu-open')) return;
+      var clickedBurger = false;
+      burgers.forEach(function(btn){
+        if(btn.contains(e.target)) clickedBurger = true;
+      });
+      if(clickedBurger || navLinks.contains(e.target)) return;
+      setOpen(false);
+    }, true);
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') setOpen(false);
     });
-  });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.addEventListener('pageshow', init);
 })();
 </script>
 </body></html>
