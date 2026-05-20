@@ -4332,4 +4332,53 @@ document.querySelectorAll('.reveal,.hero-bar,.page-bar').forEach(el=>obs.observe
   window.addEventListener('pageshow', init);
 })();
 </script>
+
+<style id="v77-final-mobile-menu-fix">
+/* V77 — correctif définitif menu mobile: overlay plein écran, sans superposition avec le contenu */
+@media (min-width:901px){
+  nav#nav .mobile-menu-native{display:none!important;}
+}
+@media (max-width:900px){
+  body.v77-menu-open{overflow:hidden!important;touch-action:none!important;}
+  body.v77-menu-open:after{z-index:2147483005!important;}
+  nav#nav{position:sticky!important;top:0!important;z-index:2147483000!important;background:rgba(247,245,240,.98)!important;}
+  nav#nav .nav-links,
+  body.menu-open nav#nav .nav-links,
+  body.mm-menu-open nav#nav .nav-links,
+  nav#nav.menu-open .nav-links{display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;}
+  nav#nav .nav-cta{display:none!important;}
+  nav#nav .mobile-menu-native{display:block!important;margin-left:auto!important;position:static!important;z-index:2147483002!important;}
+  nav#nav .mobile-menu-native summary{list-style:none!important;display:flex!important;align-items:center!important;justify-content:center!important;width:48px!important;height:48px!important;border:1px solid rgba(26,24,22,.14)!important;border-radius:999px!important;background:#F7F5F0!important;box-shadow:0 10px 30px rgba(26,24,22,.06)!important;cursor:pointer!important;position:relative!important;z-index:2147483004!important;}
+  nav#nav .mobile-menu-native summary::-webkit-details-marker{display:none!important;}
+  nav#nav .mobile-menu-native[open] summary{position:fixed!important;top:14px!important;right:20px!important;}
+  nav#nav .mobile-menu-native .mobile-menu-native-panel{display:none!important;}
+  nav#nav .mobile-menu-native[open] .mobile-menu-native-panel{display:flex!important;position:fixed!important;inset:0!important;width:100vw!important;min-height:100vh!important;min-height:100dvh!important;height:100vh!important;height:100dvh!important;z-index:2147483001!important;background:#F7F5F0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:20px!important;padding:112px 28px 48px!important;margin:0!important;overflow-y:auto!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+  nav#nav .mobile-menu-native-panel a{display:block!important;width:auto!important;max-width:92vw!important;color:#1A1816!important;text-decoration:none!important;font-size:22px!important;line-height:1.1!important;font-weight:900!important;letter-spacing:-.025em!important;opacity:1!important;text-align:center!important;text-transform:none!important;border:0!important;background:transparent!important;padding:0!important;margin:0!important;}
+  nav#nav .mobile-menu-native-panel a[href*="cal.eu"]{margin-top:8px!important;background:#1A1816!important;color:#F7F5F0!important;padding:16px 32px!important;border-radius:999px!important;font-size:14px!important;letter-spacing:.08em!important;text-transform:uppercase!important;}
+}
+</style>
+<script id="v77-final-mobile-menu-js">
+(function(){
+  function initV77Menu(){
+    var details = document.querySelector('nav#nav .mobile-menu-native');
+    if(!details) return;
+    function sync(){
+      document.body.classList.remove('menu-open','mm-menu-open');
+      document.body.classList.toggle('v77-menu-open', details.open);
+    }
+    details.addEventListener('toggle', sync);
+    details.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ details.open=false; sync(); }, true);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && details.open){ details.open=false; sync(); }
+    });
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 900 && details.open){ details.open=false; sync(); }
+    });
+    sync();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initV77Menu); else initV77Menu();
+})();
+</script>
 </body></html>
