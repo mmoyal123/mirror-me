@@ -3414,7 +3414,63 @@ footer{
     border-bottom:0 !important;
   }
 }
-</style></head><body><div class="cursor" id="cursor"></div><div aria-hidden="true" class="ambient-motion"></div><main class="link-page"><div class="link-bg">MIRROR</div><section class="link-box reveal">
+</style>
+<style id="v65-mobile-fix">
+@media (max-width:760px){
+html,body{overflow-x:hidden!important}
+.top-banner{display:none!important}
+.hero,.page-hero{min-height:auto!important;height:auto!important;padding-top:56px!important;padding-bottom:38px!important}
+section,.section,.section-dark,.section-pale,.closing,.footer-pre{
+min-height:auto!important;
+padding-top:42px!important;
+padding-bottom:42px!important
+}
+[class*="spacer"],.hero-scroll,.orb,.decor{display:none!important}
+.nav-cta{
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+text-align:center!important;
+line-height:1!important
+}
+.mobile-menu-native{display:block!important}
+.burger,.nav-links{display:none!important}
+.mobile-menu-native summary{
+list-style:none;
+width:46px;
+height:46px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer
+}
+.mobile-menu-native summary::-webkit-details-marker{display:none}
+.mobile-menu-native-panel{
+position:fixed;
+top:82px;
+left:18px;
+right:18px;
+background:#F7F5F0;
+border:1px solid rgba(26,24,22,.1);
+border-radius:22px;
+padding:20px;
+z-index:9999;
+box-shadow:0 20px 60px rgba(0,0,0,.08)
+}
+.mobile-menu-native-panel a{
+display:block;
+padding:14px 0;
+text-decoration:none;
+color:#1A1816;
+border-bottom:1px solid rgba(26,24,22,.08);
+font-size:13px;
+letter-spacing:.12em;
+text-transform:uppercase
+}
+.mobile-menu-native-panel a:last-child{border-bottom:0}
+}
+</style>
+</head><body><div class="cursor" id="cursor"></div><div aria-hidden="true" class="ambient-motion"></div><main class="link-page"><div class="link-bg">MIRROR</div><section class="link-box reveal">
 <h1 class="link-title">MIRROR<em>ME</em></h1><p class="link-sub">Pointer ce que tu as appris à devenir sous condition, pour retrouver une façon plus digne, plus libre et plus juste d’être en relation.</p><div class="link-list"><a class="link-item primary" href="https://chatgpt.com/g/g-6a031f13464c819196a2836686fff251-mirror-me" target="_blank"><span><span class="link-item-title">Commencer avec MIRROR</span><span class="link-item-note">conversation immédiate</span></span><span>→</span></a><a class="link-item" href="https://tally.so/r/RGZOQj" target="_blank"><span><span class="link-item-title">Demander un accompagnement</span><span class="link-item-note">questionnaire obligatoire</span></span><span>→</span></a><a class="link-item" href="coaching.html"><span><span class="link-item-title">Lire la méthode</span><span class="link-item-note">Brise Tes Chaînes</span></span><span>→</span></a><a class="link-item" href="territoires.html"><span><span class="link-item-title">Explorer les territoires</span><span class="link-item-note">famille, corps, travail, argent...</span></span><span>→</span></a><a class="link-item" href="brise-tes-chaines-guide.pdf" target="_blank"><span><span class="link-item-title">Guide Brise Tes Chaînes</span><span class="link-item-note">ebook + exercice</span></span><span>→</span></a><a class="link-item" href="https://soul-mirror-system.lovable.app/" target="_blank"><span><span class="link-item-title">Accéder à MIRROR Me</span><span class="link-item-note">outil structuré Lovable</span></span><span>→</span></a><a class="link-item" href="https://www.instagram.com/mickaelmoyal_" target="_blank"><span><span class="link-item-title">Instagram</span><span class="link-item-note">@mickaelmoyal_</span></span><span>→</span></a><a class="link-item" href="https://www.linkedin.com/in/mickael-moyal-0a6518297" target="_blank"><span><span class="link-item-title">LinkedIn</span><span class="link-item-note">profil professionnel</span></span><span>→</span></a></div></section></main><script>
 const cur=document.getElementById('cursor');
 if(cur && window.matchMedia('(pointer:fine)').matches){
@@ -3498,8 +3554,6 @@ document.querySelectorAll('.reveal,.hero-bar,.page-bar').forEach(el=>obs.observe
   });
 })();
 </script>
-
-
 <script id="v60-mobile-menu-active">
 (function(){
   function init(){
@@ -3568,4 +3622,6 @@ document.querySelectorAll('.reveal,.hero-bar,.page-bar').forEach(el=>obs.observe
   window.addEventListener('pageshow', init);
 })();
 </script>
-</body></html>
+<style>
+/* V67: mobile menu — using existing native menu */
+</style></body></html>
