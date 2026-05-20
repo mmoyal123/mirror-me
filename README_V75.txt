@@ -1,0 +1,1 @@
+V75 — Correction de la photo en bas de la page Guide et stabilisation du menu mobile. Le menu mobile affiche les rubriques visibles : Accompagnement, Vision, Territoires, Guide, Chat IA, Coaching IA, Réserver, Questionnaire. Lien Cal conservé : https://cal.eu/michael-moyal-jdunzg
