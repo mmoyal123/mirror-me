@@ -4077,39 +4077,149 @@ text-transform:uppercase
   </div>
 </section>
 <section class="section" id="ressources">
+  <style>
+    #ressources .ig-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 360px));
+      gap:56px;
+      align-items:start;
+      justify-content:start;
+      max-width:820px;
+      margin-top:0;
+    }
+    #ressources .ig-card{
+      display:block;
+      text-decoration:none!important;
+      color:#1A1816!important;
+      background:#F7F5F0;
+      border:1px solid rgba(26,24,22,.10);
+      padding:0;
+      overflow:hidden;
+    }
+    #ressources .ig-cover{
+      width:100%;
+      aspect-ratio:4/5;
+      background:#F7F5F0;
+      position:relative;
+      overflow:hidden;
+    }
+    #ressources .ig-body{
+      padding:26px 8px 0;
+    }
+    #ressources .ig-kicker{
+      margin:0 0 24px;
+      font-size:12px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:#9A958E!important;
+      font-weight:700;
+    }
+    #ressources .ig-title{
+      margin:0;
+      color:#1A1816!important;
+      font-size:22px;
+      line-height:1.08;
+      font-weight:900;
+      letter-spacing:-.03em;
+    }
+    #ressources .ig-text{
+      margin:24px 0 0;
+      color:#8C8780!important;
+      font-size:15px;
+      line-height:1.7;
+      font-weight:400;
+    }
+    #ressources .ig-link{
+      margin-top:30px;
+      display:inline-block;
+      color:#1A1816!important;
+      font-size:15px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    #ressources .ig-yellow-title{
+      position:absolute;
+      left:8%;
+      right:8%;
+      top:43%;
+      transform:translateY(-50%);
+      background:#F8DC3C;
+      padding:18px 20px;
+      color:#1A1816;
+      font-size:42px;
+      line-height:1.18;
+      font-weight:900;
+      letter-spacing:-.05em;
+    }
+    #ressources .ig-over-title{
+      position:absolute;
+      left:9%;
+      right:9%;
+      top:18%;
+      color:#1A1816;
+      font-size:34px;
+      line-height:1.42;
+      font-weight:300;
+      letter-spacing:-.04em;
+    }
+    #ressources .ig-over-title strong{
+      background:#F8DC3C;
+      padding:8px 14px;
+      font-weight:900;
+      display:inline-block;
+    }
+    #ressources .ig-handle{
+      position:absolute;
+      left:9%;
+      bottom:34px;
+      color:#8C8780;
+      font-size:12px;
+      letter-spacing:.02em;
+    }
+    @media(max-width:900px){
+      #ressources .ig-grid{
+        grid-template-columns:1fr;
+        gap:52px;
+        max-width:360px;
+      }
+      #ressources .ig-body{padding-left:0;padding-right:0;}
+    }
+  </style>
+
   <span class="label reveal">Ressources Instagram</span>
   <h2 class="t-large reveal d1">Deux carrousels pour commencer à voir ce qui se répète.</h2>
   <p class="body-sm reveal d2" style="margin-top:18px;color:var(--grey);max-width:720px;margin-bottom:64px">Deux lectures visuelles pour repérer les mécanismes de validation, de contrôle et de confiance en soi.</p>
-  <div class="cards-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px">
-    <a class="card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;padding:0;overflow:hidden">
-      <div style="aspect-ratio:4/5;background:#F7F5F0;position:relative">
-        <div style="position:absolute;left:9%;top:6%;width:100px;height:6px;background:var(--yellow)"></div>
-        <div style="position:absolute;left:9%;top:48%;background:var(--yellow);padding:12px 18px;font-size:clamp(26px,3vw,42px);font-weight:900;color:var(--dark)">L’amour à condition.</div>
-        <div style="position:absolute;left:9%;bottom:34px;color:var(--grey);font-size:12px">@mickaelmoyal_</div>
+
+  <div class="ig-grid">
+    <a class="ig-card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener">
+      <div class="ig-cover">
+        <div style="position:absolute;left:8%;top:7%;width:100px;height:6px;background:#F8DC3C"></div>
+        <div class="ig-yellow-title">L’amour à<br>condition.</div>
+        <div class="ig-handle">@mickaelmoyal_</div>
       </div>
-      <div style="padding:30px">
-        <p class="card-num">01 — Instagram</p>
-        <p class="card-title">L’amour à condition</p>
-        <p class="card-body">Quand l’amour devient un baromètre de validation externe.</p>
-        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>
+      <div class="ig-body">
+        <p class="ig-kicker">01 — Instagram</p>
+        <h3 class="ig-title">L’amour à condition</h3>
+        <p class="ig-text">Quand l’amour devient un baromètre de validation externe.</p>
+        <span class="ig-link">Voir sur Instagram →</span>
       </div>
     </a>
-    <a class="card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;padding:0;overflow:hidden">
-      <div style="aspect-ratio:4/5;background:#F7F5F0;position:relative">
-        <div style="position:absolute;left:9%;top:6%;width:100px;height:6px;background:var(--yellow)"></div>
-        <div style="position:absolute;left:9%;right:9%;top:38%;font-size:clamp(20px,2.1vw,32px);line-height:1.9;color:var(--dark)">L’<span style="background:var(--yellow);font-weight:900;padding:6px 12px">overthinking</span> vient souvent<br>d’un manque de confiance en soi.</div>
-        <div style="position:absolute;left:9%;bottom:34px;color:var(--grey);font-size:12px">@mickaelmoyal_</div>
+
+    <a class="ig-card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener">
+      <div class="ig-cover">
+        <div style="position:absolute;left:9%;top:7%;width:100px;height:6px;background:#F8DC3C"></div>
+        <div class="ig-over-title">L’<strong>overthinking</strong><br>vient souvent<br>d’un manque de<br>confiance en soi.</div>
+        <div class="ig-handle">@mickaelmoyal_</div>
       </div>
-      <div style="padding:30px">
-        <p class="card-num">02 — Instagram</p>
-        <p class="card-title">Overthinking et confiance en soi</p>
-        <p class="card-body">Quand tu cherches à contrôler parce que tu ne te fais pas encore confiance pour traverser.</p>
-        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>
+      <div class="ig-body">
+        <p class="ig-kicker">02 — Instagram</p>
+        <h3 class="ig-title">Overthinking et confiance en soi</h3>
+        <p class="ig-text">Quand tu cherches à contrôler parce que tu ne te fais pas encore confiance pour traverser.</p>
+        <span class="ig-link">Voir sur Instagram →</span>
       </div>
     </a>
   </div>
 </section>
-<!-- trigger patch -->
 <section class="section section-dark" id="guide"><div class="grid-2c"><div><span class="label label-light reveal">Guide · Ebook · Exercice</span><h2 class="t-large reveal d1" style="color:var(--cream)">Brise Tes Chaînes,<br/><em class="t-italic-yellow">en version ressource.</em></h2><div class="body reveal d2 dark-soft" style="margin-top:36px"><p>Le guide sert d’entrée douce dans le travail : un exercice pour commencer à repérer ce qui se répète, la condition qui agit en arrière-plan, et la version de toi qui prend la main quand tu cherches à rester aimé, validé ou en sécurité.</p><p>Il ne remplace pas l’accompagnement. Il prépare le regard.</p></div></div><div class="card card-dark reveal d2" style="min-height:auto"><p class="card-num">Ressource</p><p class="card-title">Guide Brise Tes Chaînes</p><p class="card-body"><span class="guide-visible-text">Le guide Brise Tes Chaînes est disponible sur le site. Il sert d’entrée vers l’ebook et l’exercice d’introspection. D’autres guides BTC viendront ensuite approfondir les territoires : famille, parentalité, couple, travail, argent, corps, sexualité, alimentation, substances, regard social.</span></p><a class="btn btn-yellow" href="brise-tes-chaines-guide.pdf" rel="noopener" style="margin-top:36px" target="_blank"><span style="font-family:Poppins,sans-serif!important;color:#171512!important;opacity:1!important;">Ouvrir le PDF du guide →</span></a></div></div></section><section class="section section-dark" style="text-align:center;border-top:1px solid rgba(247,245,240,.08)"><span class="label label-light reveal" style="text-align:center">L’entrée dans le travail</span><h2 class="t-xl reveal d1" style="color:var(--cream);max-width:720px;margin:16px auto 0">Le questionnaire<br/>fait déjà travailler.</h2><p class="body reveal d2" style="margin-top:32px;color:rgba(247,245,240,.65);max-width:600px;margin-left:auto;margin-right:auto">Neuf questions sur ce qui se répète, ce que tu sais déjà mais n’oses pas regarder, le prix de l’immobilité. Tu réponds, je lis. Je reviens dans les 48h.</p><div class="reveal d3" style="margin-top:52px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap"><a class="btn btn-yellow" href="https://cal.eu/michael-moyal-jdunzg" rel="noopener" style="font-size:14px;padding:20px 48px" target="_blank">Réserver une session →</a><a class="btn btn-light" href="https://tally.so/r/RGZOQj" rel="noopener" style="font-size:14px;padding:20px 48px" target="_blank">Remplir le questionnaire →</a></div></section><section class="closing"><h2 class="closing-title reveal">Le pattern ne disparaît pas.<span>Tu cesses de le servir.</span></h2><div class="reveal d2" style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap"><a class="btn btn-dark" href="https://cal.eu/michael-moyal-jdunzg" rel="noopener" style="font-size:14px;padding:20px 44px" target="_blank">Réserver une session →</a><a class="btn btn-light" href="https://tally.so/r/RGZOQj" rel="noopener" style="font-size:14px;padding:20px 44px" target="_blank">Remplir le questionnaire →</a></div></section>
 <div class="contact-strip reveal">
 <p><strong>Une question avant de commencer ?</strong><br/>Tu peux passer par le questionnaire pour une demande d’accompagnement, ou m’écrire directement si tu as besoin de clarifier le bon point d’entrée.</p>
