@@ -5,8 +5,8 @@ on:
     branches: [main]
     paths:
       - 'ressources-section.html'
-      - 'assets/cover-amour-condition.png'
-      - 'assets/cover-overthinking.png'
+      - 'assets/cover-amour-condition.svg'
+      - 'assets/cover-overthinking.svg'
       - '.github/workflows/patch-homepage-resources.yml'
   workflow_dispatch:
 
@@ -22,17 +22,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import base64
-
-          def img(path):
-              return 'data:image/png;base64,' + base64.b64encode(Path(path).read_bytes()).decode('ascii')
-
           block = Path('ressources-section.html').read_text(encoding='utf-8').strip() + '\n'
-          block = block.replace('assets/cover-amour-condition.png', img('assets/cover-amour-condition.png'))
-          block = block.replace('assets/cover-overthinking.png', img('assets/cover-overthinking.png'))
-          block = block.replace('https://raw.githubusercontent.com/mmoyal123/mirror-me/main/assets/cover-amour-condition.png', img('assets/cover-amour-condition.png'))
-          block = block.replace('https://raw.githubusercontent.com/mmoyal123/mirror-me/main/assets/cover-overthinking.png', img('assets/cover-overthinking.png'))
-
           index = Path('index.html')
           html = index.read_text(encoding='utf-8')
           marker = '<section class="section section-dark" id="guide">'
@@ -48,4 +38,4 @@ jobs:
           git config user.name ChatGPT
           git config user.email chatgpt-actions@users.noreply.github.com
           git add index.html
-          git diff --cached --quiet || (git commit -m "Embed Instagram carousel images on homepage" && git push)
+          git diff --cached --quiet || (git commit -m "Patch homepage Instagram carousel covers" && git push)
