@@ -23,32 +23,6 @@ jobs:
           python3 <<'PY'
           from pathlib import Path
 
-          Path('assets').mkdir(exist_ok=True)
-
-          amour_svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
-            <rect width="1080" height="1350" fill="#F7F5F0"/>
-            <rect x="90" y="80" width="100" height="6" fill="#F8DC3C"/>
-            <rect x="90" y="652" width="730" height="96" fill="#F8DC3C"/>
-            <text x="108" y="722" font-family="Poppins, Arial, sans-serif" font-size="64" font-weight="800" fill="#1A1816">L’amour à condition.</text>
-            <line x1="0" y1="1272" x2="1080" y2="1272" stroke="#E2DFD8"/>
-            <text x="90" y="1314" font-family="Poppins, Arial, sans-serif" font-size="20" fill="#8C8780">@mickaelmoyal_</text>
-          </svg>'''
-
-          overthinking_svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
-            <rect width="1080" height="1350" fill="#F7F5F0"/>
-            <rect x="90" y="80" width="100" height="6" fill="#F8DC3C"/>
-            <text x="90" y="540" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="400" fill="#1A1816">L’</text>
-            <rect x="118" y="485" width="380" height="76" fill="#F8DC3C"/>
-            <text x="135" y="540" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="800" fill="#1A1816">overthinking</text>
-            <text x="516" y="540" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="400" fill="#1A1816"> vient souvent</text>
-            <text x="90" y="625" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="400" fill="#1A1816">d’un manque de confiance en soi.</text>
-            <line x1="0" y1="1272" x2="1080" y2="1272" stroke="#E2DFD8"/>
-            <text x="90" y="1314" font-family="Poppins, Arial, sans-serif" font-size="20" fill="#8C8780">@mickaelmoyal_</text>
-          </svg>'''
-
-          Path('assets/carousel-amour-condition.svg').write_text(amour_svg, encoding='utf-8')
-          Path('assets/carousel-overthinking.svg').write_text(overthinking_svg, encoding='utf-8')
-
           path = Path('index.html')
           text = path.read_text(encoding='utf-8')
 
@@ -69,9 +43,15 @@ jobs:
     Deux lectures visuelles pour repérer les mécanismes de validation, de contrôle et de confiance en soi qui se rejouent dans les relations.
   </p>
 
-  <div class="cards-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px">
-    <a class="card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden">
-      <img src="assets/carousel-amour-condition.svg" alt="Carrousel Instagram L’amour à condition" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-bottom:1px solid rgba(23,21,18,.08)">
+  <div class="cards-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px;background:var(--line);border:1px solid var(--line)">
+    <a class="card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden;background:var(--cream)">
+      <div style="aspect-ratio:4/5;background:#F7F5F0;position:relative;border-bottom:1px solid rgba(26,24,22,.08)">
+        <div style="position:absolute;left:9%;top:6%;width:10%;height:6px;background:var(--yellow)"></div>
+        <div style="position:absolute;left:9%;top:48%;background:var(--yellow);padding:12px 18px">
+          <span style="font-size:clamp(26px,3vw,42px);font-weight:900;letter-spacing:-.02em;color:var(--dark)">L’amour à condition.</span>
+        </div>
+        <div style="position:absolute;left:9%;bottom:34px;color:var(--grey);font-size:12px">@mickaelmoyal_</div>
+      </div>
       <div style="padding:30px 30px 34px">
         <p class="card-num">01 — Instagram</p>
         <p class="card-title">L’amour à condition</p>
@@ -80,8 +60,15 @@ jobs:
       </div>
     </a>
 
-    <a class="card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden">
-      <img src="assets/carousel-overthinking.svg" alt="Carrousel Instagram Overthinking et confiance en soi" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-bottom:1px solid rgba(23,21,18,.08)">
+    <a class="card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden;background:var(--cream)">
+      <div style="aspect-ratio:4/5;background:#F7F5F0;position:relative;border-bottom:1px solid rgba(26,24,22,.08)">
+        <div style="position:absolute;left:9%;top:6%;width:10%;height:6px;background:var(--yellow)"></div>
+        <div style="position:absolute;left:9%;right:9%;top:38%;font-size:clamp(20px,2.1vw,32px);line-height:1.9;color:var(--dark)">
+          <span>L’</span><span style="background:var(--yellow);font-weight:900;padding:6px 12px">overthinking</span><span> vient souvent</span><br>
+          <span>d’un manque de confiance en soi.</span>
+        </div>
+        <div style="position:absolute;left:9%;bottom:34px;color:var(--grey);font-size:12px">@mickaelmoyal_</div>
+      </div>
       <div style="padding:30px 30px 34px">
         <p class="card-num">02 — Instagram</p>
         <p class="card-title">Overthinking et confiance en soi</p>
@@ -107,7 +94,7 @@ jobs:
         run: |
           git config user.name "ChatGPT"
           git config user.email "chatgpt-actions@users.noreply.github.com"
-          git add index.html assets/carousel-amour-condition.svg assets/carousel-overthinking.svg
+          git add index.html
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
