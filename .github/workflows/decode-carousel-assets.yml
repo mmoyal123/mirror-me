@@ -18,9 +18,9 @@ jobs:
       - name: Decode uploaded carousel covers
         run: |
           mkdir -p assets
-          cat $(ls tmp/covers/overthinking.part-* | sort) > /tmp/overthinking.b64
-          cat $(ls tmp/covers/amour-condition.part-* | sort) > /tmp/amour-condition.b64
-          cat $(ls tmp/covers/tout-commence.part-* | sort) > /tmp/tout-commence.b64
+          cat $(ls tmp/covers/overthinking.part-* | sort) | rev > /tmp/overthinking.b64
+          cat $(ls tmp/covers/amour-condition.part-* | sort) | rev > /tmp/amour-condition.b64
+          cat $(ls tmp/covers/tout-commence.part-* | sort) | rev > /tmp/tout-commence.b64
           base64 -d /tmp/overthinking.b64 > assets/carousel-overthinking.png
           base64 -d /tmp/amour-condition.b64 > assets/carousel-amour-condition.png
           base64 -d /tmp/tout-commence.b64 > assets/carousel-tout-commence.png
