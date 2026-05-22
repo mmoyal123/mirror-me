@@ -1,0 +1,41 @@
+name: Patch homepage resources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ressources-section.html'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace resources block
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          block = Path('ressources-section.html').read_text(encoding='utf-8').strip() + '\n'
+          marker = '<section class="section section-dark" id="guide">'
+          end = html.find(marker)
+          if end == -1:
+              raise SystemExit('guide marker not found')
+          start = html.find('<section class="section" id="ressources">')
+          if start != -1 and start < end:
+              html = html[:start] + block + html[end:]
+          else:
+              html = html[:end] + block + html[end:]
+          index.write_text(html, encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name ChatGPT
+          git config user.email chatgpt-actions@users.noreply.github.com
+          git add index.html
+          git diff --cached --quiet || (git commit -m "Replace ressources section with Instagram carousels" && git push)
