@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="#F7F5F0"/>
+  <rect x="90" y="80" width="100" height="6" fill="#F8DC3C"/>
+  <rect x="90" y="652" width="730" height="96" fill="#F8DC3C"/>
+  <text x="108" y="722" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="900" letter-spacing="-3" fill="#1A1816">L'amour à condition.</text>
+  <line x1="0" y1="1272" x2="1080" y2="1272" stroke="#E2DFD8" stroke-width="1"/>
+  <text x="90" y="1314" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#8C8780">@mickaelmoyal_</text>
+</svg>
