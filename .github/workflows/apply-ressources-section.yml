@@ -22,11 +22,32 @@ jobs:
         run: |
           python3 <<'PY'
           from pathlib import Path
-          import base64
 
           Path('assets').mkdir(exist_ok=True)
-          Path('assets/carousel-amour-condition.jpg').write_bytes(base64.b64decode('/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoODhEYExQVFhUWFBYcHBwcGBocHBcYHSggGBolHRcVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGy0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIA4QCyAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAFBgMEBwIBAP/EAEkQAAEDAgMEBgYGBQIEBwEAAAEAAhEDIQQxBRJBUQYiYXGBEzKRobEHQlJigrHwIzNTYpLRFBUkM4OSorIVNEPBU4OkwsNDU2Oy/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAECAwQF/8QAJxEBAAICAgIBBAEFAQAAAAAAAAECEQMhEjEEQVEiYXEFE4GRobH/2gAMAwEAAhEDEQA/APfoREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARERc0VE5jJDR7Z8ckXbbBJYkmNxfIl7h08kuYx32Njse5b/AEZb0PIJzDtdY8J6qMEZfYGF7rXax/zg4JDu8jbgfMlMTZtmlNc/CBYOdPEu4mt4cCS0h2M47LzD/hXHXoLQhbbXFr3NsFxc+a/mH/AGFe10c9ZOYyQ1+FqPypbREfUpEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAWPS4PFm6XmVp7MtaLWXV7cyVjI0i68DkLWGMcL5JBx1Vygqtztd4ZKj0lNzK3DtEWrZUwFizR5WGVETsN3K8cNskaJg3hssbHaDuJxsOaPUuYAVceakak0lpZHJblOkCpiMY31NRfyh/VuVapREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQKyNva7rnVa2dwg+iT5jnmVTK92a64ym2gsOknixMdjK8Y7D5fq2au5n3UOfa1mLTc4h81rXGdxhcOoiJ4/qt2vHtC9KrUlsve8xMbRHEtmrnu1IVlRcXUAOJrbNkMbAAaLc2HBOObT13NCw4PRFyREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBdaquxsd4N5Yn2XqVL+K/x/wC+S+cpS6oiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIP/Z'))
-          Path('assets/carousel-overthinking.jpg').write_bytes(base64.b64decode('/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoODhEYExQVFhUWFBYcHBwcGBocHBcYHSggGBolHRcVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGy0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIA4QCyAMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABQYBAwQCBwj/xABGEAACAgAFAwMCAwQHBQkBAAABAgADBBEhBRIxQVEGEyJhcYGRMgcyobEUQlLRFiM0YoKhwtEWQ3Ki0vAjQ3ODkwgkJTVT/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAIDBAEFBv/EACsRAAICAQQABQMEAwEAAAAAAAAAAQIRAyExBBJBUWFxEyKBkaGxIjIz8AX/2gAMAwEAAhEDEQA/APudEhERBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHcalWrxp15YiJLHYyQczYF2uN7iv8q1thjzI4HjUSqLxNUdVMsyLdIfrHev9I6dy79NT42OUKDV7C9zUi4nJbXWw2N+5bjjM6h5yq2O26le4PelnTzj3MLoHOASWG0icY8lI7DrWve11yt2+q48BppapNNaSHdcs8KXeyV4sfxmtvkz82L0xERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERBR5lORm8UlQ3lxdhc6d81tvkS2+mVdnqqyXo+rCyZovZIcwcUuVssby1mDW+iG+WP3ri2eOPBk00aTdMEsw1zRy3GMzmOHt9C6DTKjNqxqYpdwdnN3C6zLmfFieUOnHuUEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERVq1VAc1t7pMRLgkI6nlqkbID7ur0dT9to3fDVE5lm00tdI7KbZpLYYKzQnlvjiHT1h27D53n6V2KE1woqXsqYTMzMVIyyQ3Al7eDn5dSzlaNzcZxrWvGZ55PPNRTNXaR5jEcPQ7rS5W+ed3oMCYicOYdbkK4fVrqQeP2XfJBrrSv6tcKIERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH/2Q=='))
+
+          amour_svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+            <rect width="1080" height="1350" fill="#F7F5F0"/>
+            <rect x="90" y="80" width="100" height="6" fill="#F8DC3C"/>
+            <rect x="90" y="652" width="730" height="96" fill="#F8DC3C"/>
+            <text x="108" y="722" font-family="Poppins, Arial, sans-serif" font-size="64" font-weight="800" fill="#1A1816">L’amour à condition.</text>
+            <line x1="0" y1="1272" x2="1080" y2="1272" stroke="#E2DFD8"/>
+            <text x="90" y="1314" font-family="Poppins, Arial, sans-serif" font-size="20" fill="#8C8780">@mickaelmoyal_</text>
+          </svg>'''
+
+          overthinking_svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+            <rect width="1080" height="1350" fill="#F7F5F0"/>
+            <rect x="90" y="80" width="100" height="6" fill="#F8DC3C"/>
+            <text x="90" y="540" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="400" fill="#1A1816">L’</text>
+            <rect x="118" y="485" width="380" height="76" fill="#F8DC3C"/>
+            <text x="135" y="540" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="800" fill="#1A1816">overthinking</text>
+            <text x="516" y="540" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="400" fill="#1A1816"> vient souvent</text>
+            <text x="90" y="625" font-family="Poppins, Arial, sans-serif" font-size="50" font-weight="400" fill="#1A1816">d’un manque de confiance en soi.</text>
+            <line x1="0" y1="1272" x2="1080" y2="1272" stroke="#E2DFD8"/>
+            <text x="90" y="1314" font-family="Poppins, Arial, sans-serif" font-size="20" fill="#8C8780">@mickaelmoyal_</text>
+          </svg>'''
+
+          Path('assets/carousel-amour-condition.svg').write_text(amour_svg, encoding='utf-8')
+          Path('assets/carousel-overthinking.svg').write_text(overthinking_svg, encoding='utf-8')
 
           path = Path('index.html')
           text = path.read_text(encoding='utf-8')
@@ -34,47 +55,44 @@ jobs:
           start = text.find('<section class="section" id="ressources">')
           marker = '<section class="section section-dark" id="guide">'
           end = text.find(marker)
-
           if end == -1:
               raise SystemExit('Guide section marker not found. Index was not modified.')
 
-          snippet_lines = [
-              '<section class="section" id="ressources">',
-              '  <span class="label reveal">Ressources Instagram</span>',
-              '',
-              '  <h2 class="t-large reveal d1">',
-              '    Deux carrousels pour commencer à voir ce qui se répète.',
-              '  </h2>',
-              '',
-              '  <p class="body-sm reveal d2" style="margin-top:18px;color:var(--grey);max-width:720px;margin-bottom:64px">',
-              '    Deux lectures visuelles pour repérer les mécanismes de validation, de contrôle et de confiance en soi qui se rejouent dans les relations.',
-              '  </p>',
-              '',
-              '  <div class="cards-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px">',
-              '    <a class="card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden">',
-              '      <img src="assets/carousel-amour-condition.jpg" alt="Carrousel Instagram L’amour à condition" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-bottom:1px solid rgba(23,21,18,.08)">',
-              '      <div style="padding:30px 30px 34px">',
-              '        <p class="card-num">01 — Instagram</p>',
-              '        <p class="card-title">L’amour à condition</p>',
-              '        <p class="card-body">Quand l’amour devient un baromètre de validation externe.</p>',
-              '        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>',
-              '      </div>',
-              '    </a>',
-              '',
-              '    <a class="card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden">',
-              '      <img src="assets/carousel-overthinking.jpg" alt="Carrousel Instagram Overthinking et confiance en soi" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-bottom:1px solid rgba(23,21,18,.08)">',
-              '      <div style="padding:30px 30px 34px">',
-              '        <p class="card-num">02 — Instagram</p>',
-              '        <p class="card-title">Overthinking et confiance en soi</p>',
-              '        <p class="card-body">Quand tu cherches à contrôler parce que tu ne te fais pas encore confiance pour traverser.</p>',
-              '        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>',
-              '      </div>',
-              '    </a>',
-              '  </div>',
-              '</section>',
-              ''
-          ]
-          snippet = '\n'.join(snippet_lines) + '\n'
+          snippet = '''<section class="section" id="ressources">
+  <span class="label reveal">Ressources Instagram</span>
+
+  <h2 class="t-large reveal d1">
+    Deux carrousels pour commencer à voir ce qui se répète.
+  </h2>
+
+  <p class="body-sm reveal d2" style="margin-top:18px;color:var(--grey);max-width:720px;margin-bottom:64px">
+    Deux lectures visuelles pour repérer les mécanismes de validation, de contrôle et de confiance en soi qui se rejouent dans les relations.
+  </p>
+
+  <div class="cards-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px">
+    <a class="card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden">
+      <img src="assets/carousel-amour-condition.svg" alt="Carrousel Instagram L’amour à condition" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-bottom:1px solid rgba(23,21,18,.08)">
+      <div style="padding:30px 30px 34px">
+        <p class="card-num">01 — Instagram</p>
+        <p class="card-title">L’amour à condition</p>
+        <p class="card-body">Quand l’amour devient un baromètre de validation externe.</p>
+        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>
+      </div>
+    </a>
+
+    <a class="card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden">
+      <img src="assets/carousel-overthinking.svg" alt="Carrousel Instagram Overthinking et confiance en soi" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-bottom:1px solid rgba(23,21,18,.08)">
+      <div style="padding:30px 30px 34px">
+        <p class="card-num">02 — Instagram</p>
+        <p class="card-title">Overthinking et confiance en soi</p>
+        <p class="card-body">Quand tu cherches à contrôler parce que tu ne te fais pas encore confiance pour traverser.</p>
+        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+'''
 
           if start != -1 and start < end:
               text = text[:start] + snippet + text[end:]
@@ -89,7 +107,7 @@ jobs:
         run: |
           git config user.name "ChatGPT"
           git config user.email "chatgpt-actions@users.noreply.github.com"
-          git add index.html assets/carousel-amour-condition.jpg assets/carousel-overthinking.jpg
+          git add index.html assets/carousel-amour-condition.svg assets/carousel-overthinking.svg
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
