@@ -34,54 +34,56 @@ jobs:
           if marker not in text:
               raise SystemExit('Guide section marker not found. Index was not modified.')
 
-          snippet = '''<section class="section" id="ressources">
-  <span class="label reveal">Ressources</span>
-
-  <h2 class="t-large reveal d1">
-    Commencer à mettre des mots.
-  </h2>
-
-  <p class="body-sm reveal d2" style="margin-top:18px;color:var(--grey);max-width:680px;margin-bottom:64px">
-    Des supports courts, directs et visuels pour repérer ce qui se répète, comprendre le mécanisme qui prend la main, et revenir à une position plus claire.
-  </p>
-
-  <div class="cards-grid">
-    <div class="card reveal">
-      <p class="card-num">01 —</p>
-      <p class="card-title">Guide Brise Tes Chaînes</p>
-      <p class="card-body">
-        Un premier support pour identifier une scène précise, nommer le schéma, et comprendre ce que tu continues peut-être à protéger.
-      </p>
-      <a class="offer-link" href="brise-tes-chaines-guide.pdf" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">
-        Ouvrir le guide →
-      </a>
-    </div>
-
-    <div class="card reveal d1">
-      <p class="card-num">02 —</p>
-      <p class="card-title">Questionnaire d’entrée</p>
-      <p class="card-body">
-        Neuf questions pour clarifier ce qui revient, ce que tu sais déjà, et l’endroit exact où le travail peut commencer.
-      </p>
-      <a class="offer-link" href="https://tally.so/r/RGZOQj" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">
-        Remplir le questionnaire →
-      </a>
-    </div>
-
-    <div class="card reveal d2">
-      <p class="card-num">03 —</p>
-      <p class="card-title">MIRROR IA</p>
-      <p class="card-body">
-        Un espace immédiat pour déposer une situation, être reflété sans détour, et commencer à voir le pattern en action.
-      </p>
-      <a class="offer-link" href="https://mickaelmirror.lovable.app/" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">
-        Ouvrir MIRROR IA →
-      </a>
-    </div>
-  </div>
-</section>
-
-'''
+          snippet_lines = [
+              '<section class="section" id="ressources">',
+              '  <span class="label reveal">Ressources</span>',
+              '',
+              '  <h2 class="t-large reveal d1">',
+              '    Commencer à mettre des mots.',
+              '  </h2>',
+              '',
+              '  <p class="body-sm reveal d2" style="margin-top:18px;color:var(--grey);max-width:680px;margin-bottom:64px">',
+              '    Des supports courts, directs et visuels pour repérer ce qui se répète, comprendre le mécanisme qui prend la main, et revenir à une position plus claire.',
+              '  </p>',
+              '',
+              '  <div class="cards-grid">',
+              '    <div class="card reveal">',
+              '      <p class="card-num">01 —</p>',
+              '      <p class="card-title">Guide Brise Tes Chaînes</p>',
+              '      <p class="card-body">',
+              '        Un premier support pour identifier une scène précise, nommer le schéma, et comprendre ce que tu continues peut-être à protéger.',
+              '      </p>',
+              '      <a class="offer-link" href="brise-tes-chaines-guide.pdf" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">',
+              '        Ouvrir le guide →',
+              '      </a>',
+              '    </div>',
+              '',
+              '    <div class="card reveal d1">',
+              '      <p class="card-num">02 —</p>',
+              '      <p class="card-title">Questionnaire d’entrée</p>',
+              '      <p class="card-body">',
+              '        Neuf questions pour clarifier ce qui revient, ce que tu sais déjà, et l’endroit exact où le travail peut commencer.',
+              '      </p>',
+              '      <a class="offer-link" href="https://tally.so/r/RGZOQj" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">',
+              '        Remplir le questionnaire →',
+              '      </a>',
+              '    </div>',
+              '',
+              '    <div class="card reveal d2">',
+              '      <p class="card-num">03 —</p>',
+              '      <p class="card-title">MIRROR IA</p>',
+              '      <p class="card-body">',
+              '        Un espace immédiat pour déposer une situation, être reflété sans détour, et commencer à voir le pattern en action.',
+              '      </p>',
+              '      <a class="offer-link" href="https://mickaelmirror.lovable.app/" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">',
+              '        Ouvrir MIRROR IA →',
+              '      </a>',
+              '    </div>',
+              '  </div>',
+              '</section>',
+              ''
+          ]
+          snippet = '\n'.join(snippet_lines) + '\n'
 
           text = text.replace(marker, snippet + marker, 1)
           path.write_text(text, encoding='utf-8')
