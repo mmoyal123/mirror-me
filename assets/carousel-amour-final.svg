@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="#F7F5F0"/>
+  <rect x="85" y="90" width="98" height="6" fill="#F8DC3C"/>
+  <g font-family="Poppins, Arial, Helvetica, sans-serif" fill="#1A1816">
+    <text x="87" y="535" font-size="52" font-weight="400" letter-spacing="1">L’</text>
+    <rect x="118" y="476" width="535" height="84" fill="#F8DC3C"/>
+    <text x="130" y="535" font-size="52" font-weight="800" letter-spacing="1">amour à condition.</text>
+  </g>
+  <line x1="0" y1="1235" x2="1080" y2="1235" stroke="#DCD9D3" stroke-width="1"/>
+  <text x="87" y="1288" font-family="Poppins, Arial, Helvetica, sans-serif" font-size="24" fill="#8C8780">@mickaelmoyal_</text>
+  <text x="980" y="1288" font-family="Poppins, Arial, Helvetica, sans-serif" font-size="24" fill="#8C8780">2</text>
+</svg>
