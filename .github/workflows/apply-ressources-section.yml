@@ -1,103 +1,10 @@
-name: Apply ressources section
+name: Apply ressources section disabled
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/apply-ressources-section.yml'
-      - 'trigger-ressources-update.txt'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  apply:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Replace ressources section with Instagram carousels
-        run: |
-          python3 <<'PY'
-          from pathlib import Path
-
-          path = Path('index.html')
-          text = path.read_text(encoding='utf-8')
-
-          start = text.find('<section class="section" id="ressources">')
-          marker = '<section class="section section-dark" id="guide">'
-          end = text.find(marker)
-          if end == -1:
-              raise SystemExit('Guide section marker not found. Index was not modified.')
-
-          snippet = '''<section class="section" id="ressources">
-  <span class="label reveal">Ressources Instagram</span>
-
-  <h2 class="t-large reveal d1">
-    Deux carrousels pour commencer à voir ce qui se répète.
-  </h2>
-
-  <p class="body-sm reveal d2" style="margin-top:18px;color:var(--grey);max-width:720px;margin-bottom:64px">
-    Deux lectures visuelles pour repérer les mécanismes de validation, de contrôle et de confiance en soi qui se rejouent dans les relations.
-  </p>
-
-  <div class="cards-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px;background:var(--line);border:1px solid var(--line)">
-    <a class="card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden;background:var(--cream)">
-      <div style="aspect-ratio:4/5;background:#F7F5F0;position:relative;border-bottom:1px solid rgba(26,24,22,.08)">
-        <div style="position:absolute;left:9%;top:6%;width:10%;height:6px;background:var(--yellow)"></div>
-        <div style="position:absolute;left:9%;top:48%;background:var(--yellow);padding:12px 18px">
-          <span style="font-size:clamp(26px,3vw,42px);font-weight:900;letter-spacing:-.02em;color:var(--dark)">L’amour à condition.</span>
-        </div>
-        <div style="position:absolute;left:9%;bottom:34px;color:var(--grey);font-size:12px">@mickaelmoyal_</div>
-      </div>
-      <div style="padding:30px 30px 34px">
-        <p class="card-num">01 — Instagram</p>
-        <p class="card-title">L’amour à condition</p>
-        <p class="card-body">Quand l’amour devient un baromètre de validation externe.</p>
-        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>
-      </div>
-    </a>
-
-    <a class="card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:0;overflow:hidden;background:var(--cream)">
-      <div style="aspect-ratio:4/5;background:#F7F5F0;position:relative;border-bottom:1px solid rgba(26,24,22,.08)">
-        <div style="position:absolute;left:9%;top:6%;width:10%;height:6px;background:var(--yellow)"></div>
-        <div style="position:absolute;left:9%;right:9%;top:38%;font-size:clamp(20px,2.1vw,32px);line-height:1.9;color:var(--dark)">
-          <span>L’</span><span style="background:var(--yellow);font-weight:900;padding:6px 12px">overthinking</span><span> vient souvent</span><br>
-          <span>d’un manque de confiance en soi.</span>
-        </div>
-        <div style="position:absolute;left:9%;bottom:34px;color:var(--grey);font-size:12px">@mickaelmoyal_</div>
-      </div>
-      <div style="padding:30px 30px 34px">
-        <p class="card-num">02 — Instagram</p>
-        <p class="card-title">Overthinking et confiance en soi</p>
-        <p class="card-body">Quand tu cherches à contrôler parce que tu ne te fais pas encore confiance pour traverser.</p>
-        <span class="offer-link" style="margin-top:24px;display:inline-block">Voir sur Instagram →</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-'''
-
-          if start != -1 and start < end:
-              text = text[:start] + snippet + text[end:]
-          else:
-              text = text[:end] + snippet + text[end:]
-
-          path.write_text(text, encoding='utf-8')
-          print('Instagram carousel resources section applied.')
-          PY
-
-      - name: Commit changes
-        run: |
-          git config user.name "ChatGPT"
-          git config user.email "chatgpt-actions@users.noreply.github.com"
-          git add index.html
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "Replace ressources section with Instagram carousels"
-            git push
-          fi
+      - run: echo "Disabled. Homepage resources are managed manually."
