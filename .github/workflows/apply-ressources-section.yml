@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - '.github/workflows/apply-ressources-section.yml'
       - 'trigger-ressources-update.txt'
   workflow_dispatch:
 
