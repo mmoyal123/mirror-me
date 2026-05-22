@@ -4078,108 +4078,44 @@ text-transform:uppercase
 </section>
 <section class="section" id="ressources">
   <style>
-    #ressources .ig-covers{
+    #ressources .ig-real-grid{
       display:grid;
-      grid-template-columns:repeat(2, 300px);
-      gap:54px;
+      grid-template-columns:repeat(2, minmax(0, 360px));
+      gap:56px;
       align-items:start;
       justify-content:start;
+      max-width:820px;
       margin-top:56px;
-      max-width:700px;
     }
-    #ressources .ig-cover-card{
+    #ressources .ig-real-card{
       display:block;
-      width:300px;
+      width:100%;
       text-decoration:none!important;
       color:#1A1816!important;
     }
-    #ressources .ig-cover-img{
-      width:300px;
-      height:375px;
+    #ressources .ig-real-card img{
+      display:block;
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
       background:#F7F5F0;
       border:1px solid rgba(26,24,22,.08);
-      position:relative;
-      overflow:hidden;
       box-sizing:border-box;
     }
-    #ressources .ig-small-bar{
-      position:absolute;
-      left:8.3%;
-      top:5.9%;
-      width:9.3%;
-      height:3px;
-      background:#F8DC3C;
-    }
-    #ressources .ig-handle{
-      position:absolute;
-      left:8.3%;
-      bottom:30px;
-      color:#8C8780;
-      font-size:9px;
-      line-height:1;
-      letter-spacing:.01em;
-      font-weight:400;
-    }
-    #ressources .ig-page-num{
-      position:absolute;
-      right:8.3%;
-      bottom:30px;
-      color:#8C8780;
-      font-size:9px;
-      line-height:1;
-      font-weight:400;
-    }
-    #ressources .ig-love-highlight{
-      position:absolute;
-      left:8.3%;
-      top:48.3%;
-      width:67.6%;
-      height:7.1%;
-      background:#F8DC3C;
-    }
-    #ressources .ig-love-title{
-      position:absolute;
-      left:9.8%;
-      top:49.1%;
-      transform:translateY(-50%);
-      color:#1A1816;
-      font-size:18px;
-      line-height:1;
-      font-weight:900;
-      letter-spacing:-.05em;
-      white-space:nowrap;
-    }
-    #ressources .ig-over-copy{
-      position:absolute;
-      left:8.3%;
-      right:8.3%;
-      top:38.7%;
-      color:#1A1816;
-      font-size:14px;
-      line-height:1.9;
-      font-weight:300;
-      letter-spacing:-.035em;
-    }
-    #ressources .ig-over-copy strong{
-      background:#F8DC3C;
-      color:#1A1816;
-      font-size:14px;
-      font-weight:900;
-      padding:4px 8px 5px;
-      letter-spacing:-.04em;
-    }
-    #ressources .ig-caption{
+    #ressources .ig-real-link{
       margin-top:18px;
+      display:inline-block;
       color:#1A1816!important;
-      font-size:14px;
+      font-size:15px;
       font-weight:800;
       letter-spacing:.02em;
+      text-decoration:none!important;
     }
-    @media(max-width:760px){
-      #ressources .ig-covers{
+    @media(max-width:900px){
+      #ressources .ig-real-grid{
         grid-template-columns:1fr;
         gap:46px;
-        max-width:300px;
+        max-width:360px;
       }
     }
   </style>
@@ -4188,25 +4124,15 @@ text-transform:uppercase
   <h2 class="t-large reveal d1">Deux carrousels pour commencer à voir ce qui se répète.</h2>
   <p class="body-sm reveal d2" style="margin-top:18px;color:var(--grey);max-width:720px;margin-bottom:0">Deux lectures visuelles pour repérer les mécanismes de validation, de contrôle et de confiance en soi.</p>
 
-  <div class="ig-covers">
-    <a class="ig-cover-card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener">
-      <div class="ig-cover-img" aria-label="Carrousel L’amour à condition">
-        <div class="ig-small-bar"></div>
-        <div class="ig-love-highlight"></div>
-        <div class="ig-love-title">L’amour à condition.</div>
-        <div class="ig-handle">@mickaelmoyal_</div>
-      </div>
-      <div class="ig-caption">Voir sur Instagram →</div>
+  <div class="ig-real-grid">
+    <a class="ig-real-card reveal" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener">
+      <img src="assets/cover-amour-condition.png" alt="Carrousel Instagram L’amour à condition" loading="lazy">
+      <span class="ig-real-link">Voir sur Instagram →</span>
     </a>
 
-    <a class="ig-cover-card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener">
-      <div class="ig-cover-img" aria-label="Carrousel Overthinking">
-        <div class="ig-small-bar"></div>
-        <div class="ig-over-copy">L’<strong>overthinking</strong> vient souvent<br>d’un manque de confiance en soi.</div>
-        <div class="ig-handle">@mickaelmoyal_</div>
-        <div class="ig-page-num">1</div>
-      </div>
-      <div class="ig-caption">Voir sur Instagram →</div>
+    <a class="ig-real-card reveal d1" href="https://www.instagram.com/mickaelmoyal_/" target="_blank" rel="noopener">
+      <img src="assets/cover-overthinking.png" alt="Carrousel Instagram Overthinking et confiance en soi" loading="lazy">
+      <span class="ig-real-link">Voir sur Instagram →</span>
     </a>
   </div>
 </section>
