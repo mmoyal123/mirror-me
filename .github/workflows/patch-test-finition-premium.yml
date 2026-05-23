@@ -1,0 +1,31 @@
+name: Patch test finition premium
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-test-finition-premium.yml'
+      - 'scripts/patch_test_finition.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test-finition-premium
+      - name: Apply test patch
+        run: |
+          git fetch origin main
+          git show origin/main:scripts/patch_test_finition.py > /tmp/patch_test_finition.py
+          python3 /tmp/patch_test_finition.py
+      - name: Commit changes
+        run: |
+          git config user.name ChatGPT
+          git config user.email chatgpt-actions@users.noreply.github.com
+          git add index.html
+          git diff --cached --quiet || (git commit -m "Add premium clarity layer to test branch" && git push origin test-finition-premium)
