@@ -2,7 +2,7 @@ name: Clean formats page
 on:
   push:
     paths:
-      - 'formats.html'
+      - '*.html'
       - '.github/workflows/clean-formats.yml'
   workflow_dispatch:
 permissions:
@@ -12,10 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Clean formats page
+      - name: Clean formats and normalize top banner
         run: |
+          # Remove the top hero photo on formats.html
           perl -0pi -e 's/&lt;!-- formats_FINAL_clean .*? no patch stacking --&gt;//s' formats.html
           perl -0pi -e 's/<div class="mm-photo-panel reveal d3"><img alt="Séance de coaching en 1:1 dans un intérieur lumineux".*?<\/div>//s' formats.html
+
+          # Normalize the top announcement bar across all HTML pages
+          for f in *.html; do
+            perl -0pi -e 's/\.top-banner\{padding:8px 20px;font-size:9px;letter-spacing:\.12em\}/.top-banner{padding:10px 60px;font-size:11px;letter-spacing:.18em}/g' "$f"
+            perl -0pi -e 's/\.top-banner\{padding:8px 20px;font-size:9px;letter-spacing:\.12em;gap:10px\}/.top-banner{padding:10px 60px;font-size:11px;letter-spacing:.18em;gap:14px}/g' "$f"
+            perl -0pi -e 's/\.top-banner span:not\(\.top-banner-dot\)\{max-width:260px;text-align:center;line-height:1\.55\}//g' "$f"
+          done
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Remove top hero photo from formats page
+          commit_message: Remove hero photo and normalize top banner
