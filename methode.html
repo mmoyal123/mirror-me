@@ -9,7 +9,26 @@
   let head = doc.head.innerHTML.replace(/<title>[\s\S]*?<\/title>/i, '<title>La méthode — MIRROR ME</title>');
   const nav = doc.querySelector('nav#nav') ? doc.querySelector('nav#nav').outerHTML : '';
   const footer = doc.querySelector('footer') ? doc.querySelector('footer').outerHTML : '';
-  const heroPhoto = doc.querySelector('.mm-photo-panel') ? doc.querySelector('.mm-photo-panel').outerHTML : '';
+  const heroNode = doc.querySelector('.mm-photo-panel');
+  let heroPhoto = '';
+  if (heroNode) {
+    heroNode.classList.remove('reveal','d1','d2','d3','d4');
+    heroNode.style.setProperty('display','block','important');
+    heroNode.style.setProperty('opacity','1','important');
+    heroNode.style.setProperty('visibility','visible','important');
+    heroNode.style.setProperty('transform','none','important');
+    const heroImg = heroNode.querySelector('img');
+    if (heroImg) {
+      heroImg.setAttribute('loading','eager');
+      heroImg.setAttribute('decoding','sync');
+      heroImg.style.setProperty('display','block','important');
+      heroImg.style.setProperty('opacity','1','important');
+      heroImg.style.setProperty('visibility','visible','important');
+      heroImg.style.setProperty('width','100%','important');
+      heroImg.style.setProperty('height','auto','important');
+    }
+    heroPhoto = heroNode.outerHTML;
+  }
   const scripts = Array.from(doc.querySelectorAll('script')).map(s => s.outerHTML).join('\n');
   const content = `
 <section class="page-hero"><div class="page-hero-bg">MÉTHODE</div><p class="page-eyebrow reveal">BRISE TES CHAÎNES</p><div class="page-bar reveal d1"></div><h1 class="page-title reveal d2">La méthode<br><em>qui remet la décision au bon endroit.</em></h1><p class="page-sub reveal d3">Un cadre pour identifier ce qui se répète, nommer la loyauté qui maintient la répétition, et revenir à une décision qui ne soit plus défaite par l’ancien mécanisme.</p>${heroPhoto}</section>
