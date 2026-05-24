@@ -8,8 +8,11 @@
   const doc = new DOMParser().parseFromString(source, 'text/html');
   let head = doc.head.innerHTML.replace(/<title>[\s\S]*?<\/title>/i, '<title>La méthode — MIRROR ME</title>');
   head += `<style id="methode-photo-hard-fix">
-    .footer-pre, .footer-pre *,.mm-photo-panel,.mm-photo-panel *{opacity:1!important;visibility:visible!important;filter:none!important;}
-    .footer-pre img,.mm-photo-panel img{display:block!important;opacity:1!important;visibility:visible!important;filter:none!important;}
+    .footer-pre{display:flex!important;opacity:1!important;visibility:visible!important;filter:none!important;}
+    .footer-pre *,.mm-photo-panel,.mm-photo-panel *{opacity:1!important;visibility:visible!important;filter:none!important;}
+    .footer-pre .photomaton{display:flex!important;opacity:1!important;visibility:visible!important;}
+    .footer-pre .photomaton-strip{display:block!important;opacity:1!important;visibility:visible!important;}
+    .footer-pre .photomaton-strip img,.footer-pre img,.mm-photo-panel img{display:block!important;opacity:1!important;visibility:visible!important;filter:none!important;}
   </style>`;
   const nav = doc.querySelector('nav#nav') ? doc.querySelector('nav#nav').outerHTML : '';
   const footer = doc.querySelector('footer') ? doc.querySelector('footer').outerHTML : '';
@@ -17,10 +20,20 @@
   let footerPre = '';
   if (footerPreNode) {
     footerPreNode.classList.remove('reveal','d1','d2','d3','d4');
-    footerPreNode.style.setProperty('display','block','important');
+    footerPreNode.style.setProperty('display','flex','important');
     footerPreNode.style.setProperty('opacity','1','important');
     footerPreNode.style.setProperty('visibility','visible','important');
     footerPreNode.style.setProperty('transform','none','important');
+    footerPreNode.querySelectorAll('.photomaton').forEach(function(el){
+      el.style.setProperty('display','flex','important');
+      el.style.setProperty('opacity','1','important');
+      el.style.setProperty('visibility','visible','important');
+    });
+    footerPreNode.querySelectorAll('.photomaton-strip').forEach(function(el){
+      el.style.setProperty('display','block','important');
+      el.style.setProperty('opacity','1','important');
+      el.style.setProperty('visibility','visible','important');
+    });
     footerPreNode.querySelectorAll('.reveal,.d1,.d2,.d3,.d4').forEach(function(el){
       el.classList.remove('reveal','d1','d2','d3','d4');
       el.style.setProperty('opacity','1','important');
