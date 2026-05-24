@@ -13,68 +13,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Clean formats file and add Formats nav link
+        with:
+          fetch-depth: 0
+      - name: Repair formats page
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git revert --no-edit 07d3b05d641ffce1d173c25113e548adfd2069bd || true
           python3 - <<'PY'
           from pathlib import Path
-
-          def add_once_after(s, needle, addition):
-              pos = 0
-              while True:
-                  i = s.find(needle, pos)
-                  if i == -1:
-                      return s
-                  after = i + len(needle)
-                  window = s[after:after + 220]
-                  if 'href="formats.html"' not in window and "href='formats.html'" not in window:
-                      return s[:after] + addition + s[after:]
-                  pos = after
-
-          html_files = [p for p in Path('.').glob('*.html') if p.is_file()]
-
-          for p in html_files:
-              s = p.read_text(encoding='utf-8')
-              original = s
-
-              # Remove internal comment if it is visible or raw
-              s = s.replace('&lt;!-- formats_FINAL_clean · consolidated from V15, no patch stacking --&gt;', '')
-              s = s.replace('<!-- formats_FINAL_clean · consolidated from V15, no patch stacking -->', '')
-
-              # Remove the hero photo only on formats.html
-              if p.name == 'formats.html':
-                  start = s.find('<div class="mm-photo-panel reveal d3">')
-                  if start != -1:
-                      end = s.find('</div>', start)
-                      if end != -1:
-                          s = s[:start] + s[end+6:]
-
-              # Desktop nav: add Formats immediately after Coaching
-              s = add_once_after(
-                  s,
-                  '<li><a href="coaching.html">Coaching</a></li>',
-                  '\n<li><a href="formats.html">Formats</a></li>'
-              )
-              s = add_once_after(
-                  s,
-                  '<li><a class="active" href="coaching.html">Coaching</a></li>',
-                  '\n<li><a href="formats.html">Formats</a></li>'
-              )
-
-              # Mobile menu: add Formats immediately after Coaching
-              s = add_once_after(
-                  s,
-                  '\n<a href="coaching.html">Coaching</a>',
-                  '\n<a href="formats.html">Formats</a>'
-              )
-              s = add_once_after(
-                  s,
-                  '\n<a class="active" href="coaching.html">Coaching</a>',
-                  '\n<a href="formats.html">Formats</a>'
-              )
-
-              if s != original:
-                  p.write_text(s, encoding='utf-8')
+          p = Path('formats.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('&lt;!-- formats_FINAL_clean · consolidated from V15, no patch stacking --&gt;', '')
+          s = s.replace('<!-- formats_FINAL_clean · consolidated from V15, no patch stacking -->', '')
+          start = s.find('<div class="mm-method-photo reveal d2">')
+          if start != -1:
+              end = s.find('</div>', start)
+              if end != -1:
+                  s = s[:start] + s[end+6:]
+          p.write_text(s, encoding='utf-8')
           PY
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Add formats navigation link after coaching
+          commit_message: Repair formats photos
