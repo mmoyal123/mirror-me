@@ -8,6 +8,7 @@
   const doc = new DOMParser().parseFromString(source, 'text/html');
   let head = doc.head.innerHTML.replace(/<title>[\s\S]*?<\/title>/i, '<title>La méthode — MIRROR ME</title>');
   const nav = doc.querySelector('nav#nav') ? doc.querySelector('nav#nav').outerHTML : '';
+  const footerPre = doc.querySelector('.footer-pre') ? doc.querySelector('.footer-pre').outerHTML : '';
   const footer = doc.querySelector('footer') ? doc.querySelector('footer').outerHTML : '';
   const heroNode = doc.querySelector('.mm-photo-panel');
   let heroPhoto = '';
@@ -38,7 +39,7 @@
 <section class="section"><div class="grid-2"><div><span class="label reveal">Entre les séances</span><h2 class="t-large reveal d1">Le travail continue dans la vraie vie.</h2></div><div class="body reveal d2"><p>Tu n’as pas à ressentir quelque chose de particulier. Tu observes le moment exact où l’ancien schéma reprend la main, ce qu’il t’a fait dire ou taire, ce que tu as fait dans les minutes qui ont suivi.</p><p>Selon le travail engagé, les outils peuvent prendre la forme d’un journal de loyauté, d’une cartographie du schéma, d’un exercice ciblé, d’une phrase d’ancrage personnelle, d’une action de rupture minimale, d’une conversation préparée ou d’une synthèse écrite.</p><p>Un outil par objectif. Pas tout. Ce qui sert ton changement maintenant.</p></div></div></section>
 <section class="section section-pale"><span class="label reveal">Les formats</span><h2 class="t-large reveal d1">Trois portes, trois niveaux de travail.</h2><div class="cards-grid reveal d2" style="margin-top:52px"><div class="card"><p class="card-num">Diagnostic relationnel</p><h3 class="card-title">Révéler</h3><p class="card-body">75 minutes pour nommer ce qui se joue vraiment, identifier la chaîne à briser en premier, puis repartir avec une synthèse sous 24h.</p></div><div class="card"><p class="card-num">Cycle Brise-Chaîne</p><h3 class="card-title">Transformer</h3><p class="card-body">Six semaines pour travailler un schéma précis, observer sa réactivation et poser des actions concrètes.</p></div><div class="card"><p class="card-num">Accompagnement Identité</p><h3 class="card-title">Stabiliser</h3><p class="card-body">Trois mois pour travailler une loyauté plus profonde et installer une nouvelle position intérieure.</p></div></div></section>
 <section class="closing"><h2 class="closing-title reveal">Tu sais peut-être quoi faire.<span>Ce qui bloque, c’est le prix relationnel de la décision.</span></h2><div class="reveal d2" style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap"><a class="btn btn-dark" href="https://tally.so/r/RGZOQj" rel="noopener" target="_blank">Remplir le questionnaire →</a><a class="btn btn-ghost" href="coaching.html">Voir les accompagnements →</a></div></section>`;
-  const body = '<div class="cursor" id="cursor"></div><div aria-hidden="true" class="ambient-motion"></div>' + nav + content + footer + scripts;
+  const body = '<div class="cursor" id="cursor"></div><div aria-hidden="true" class="ambient-motion"></div>' + nav + content + footerPre + footer + scripts;
   document.open();
   document.write('<!doctype html><html lang="fr"><head>' + head + '</head><body>' + body + '</body></html>');
   document.close();
