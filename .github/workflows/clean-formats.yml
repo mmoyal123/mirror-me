@@ -1,5 +1,10 @@
 name: Clean formats page
 on:
+  push:
+    paths:
+      - 'formats.html'
+      - '.github/workflows/clean-formats.yml'
+      - '.github/workflows/trigger-clean-formats.txt'
   workflow_dispatch:
 permissions:
   contents: write
@@ -8,13 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Clean file
+      - name: Clean formats file
         run: |
           python3 - <<'PY'
           from pathlib import Path
           p = Path('formats.html')
           s = p.read_text(encoding='utf-8')
           s = s.replace('&lt;!-- formats_FINAL_clean · consolidated from V15, no patch stacking --&gt;', '')
+          s = s.replace('<!-- formats_FINAL_clean · consolidated from V15, no patch stacking -->', '')
           start = s.find('<div class="mm-photo-panel reveal d3">')
           if start != -1:
               end = s.find('</div>', start)
