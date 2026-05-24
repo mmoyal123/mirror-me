@@ -2,9 +2,8 @@ name: Clean formats page
 on:
   push:
     paths:
-      - '*.html'
+      - 'formats.html'
       - '.github/workflows/clean-formats.yml'
-      - '.github/workflows/trigger-clean-formats.txt'
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,26 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Repair formats page
+      - name: Clean formats page
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git revert --no-edit 07d3b05d641ffce1d173c25113e548adfd2069bd || true
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('formats.html')
-          s = p.read_text(encoding='utf-8')
-          s = s.replace('&lt;!-- formats_FINAL_clean · consolidated from V15, no patch stacking --&gt;', '')
-          s = s.replace('<!-- formats_FINAL_clean · consolidated from V15, no patch stacking -->', '')
-          start = s.find('<div class="mm-method-photo reveal d2">')
-          if start != -1:
-              end = s.find('</div>', start)
-              if end != -1:
-                  s = s[:start] + s[end+6:]
-          p.write_text(s, encoding='utf-8')
-          PY
+          perl -0pi -e 's/&lt;!-- formats_FINAL_clean .*? no patch stacking --&gt;//s' formats.html
+          perl -0pi -e 's/<div class="mm-photo-panel reveal d3"><img alt="Séance de coaching en 1:1 dans un intérieur lumineux".*?<\/div>//s' formats.html
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Repair formats photos
+          commit_message: Remove top hero photo from formats page
