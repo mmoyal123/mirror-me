@@ -1,11 +1,12 @@
-# Editorial graft repaired
+# Gemini text integration prepared and applied
 
 ## Principle
+- Gemini text kept complete
 - Existing architecture preserved
 - Added editorial-graft sections removed
-- H1 and meta descriptions retained
+- Existing hero/subtext/editorial blocks reused
 - No CSS migration
-- No main branch modification
+- No main branch page modification
 
 ## Changed
 - index.html
@@ -14,10 +15,7 @@
 - coaching.html
 
 ## Removed added sections from
-- index.html
-- vision.html
-- territoires.html
-- coaching.html
+- None
 
 ## Skipped
 - None
