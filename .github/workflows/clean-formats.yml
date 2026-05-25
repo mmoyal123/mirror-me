@@ -2,7 +2,8 @@ name: Clean formats page
 on:
   push:
     paths:
-      - '*.html'
+      - 'formats.html'
+      - 'assets/hero_seance_1to1_reference.webp.b64'
       - '.github/workflows/clean-formats.yml'
   workflow_dispatch:
 permissions:
@@ -12,18 +13,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Clean formats and normalize top banner
+      - name: Restore photo and adjust top bar
         run: |
-          # Remove the top hero photo on formats.html
-          perl -0pi -e 's/&lt;!-- formats_FINAL_clean .*? no patch stacking --&gt;//s' formats.html
-          perl -0pi -e 's/<div class="mm-photo-panel reveal d3"><img alt="Séance de coaching en 1:1 dans un intérieur lumineux".*?<\/div>//s' formats.html
-
-          # Normalize the top announcement bar across all HTML pages
-          for f in *.html; do
-            perl -0pi -e 's/\.top-banner\{padding:8px 20px;font-size:9px;letter-spacing:\.12em\}/.top-banner{padding:10px 60px;font-size:11px;letter-spacing:.18em}/g' "$f"
-            perl -0pi -e 's/\.top-banner\{padding:8px 20px;font-size:9px;letter-spacing:\.12em;gap:10px\}/.top-banner{padding:10px 60px;font-size:11px;letter-spacing:.18em;gap:14px}/g' "$f"
-            perl -0pi -e 's/\.top-banner span:not\(\.top-banner-dot\)\{max-width:260px;text-align:center;line-height:1\.55\}//g' "$f"
-          done
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('formats.html')
+          data = Path('assets/hero_seance_1to1_reference.webp.b64').read_text(encoding='utf-8').strip()
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('&lt;!-- formats_FINAL_clean · consolidated from V15, no patch stacking --&gt;', '')
+          s = s.replace('<!-- formats_FINAL_clean · consolidated from V15, no patch stacking -->', '')
+          s = re.sub(r'\s*<div class="mm-photo-panel reveal d3">.*?</div>', '', s, flags=re.S)
+          hero = '\n<div class="mm-photo-panel reveal d3"><img alt="Séance de coaching 1:1 dans un intérieur lumineux" decoding="async" loading="eager" src="data:image/webp;base64,' + data + '"/></div>\n'
+          s = re.sub(r'(<p class="page-sub reveal d3">.*?</p>)\s*(</section>\s*<!-- ─── Marquee ─── -->)', lambda m: m.group(1) + hero + m.group(2), s, count=1, flags=re.S)
+          s = re.sub(r'/\* FORMATS_TOPBAR_FIX_START \*/.*?/\* FORMATS_TOPBAR_FIX_END \*/\s*', '', s, flags=re.S)
+          fix = '''
+/* FORMATS_TOPBAR_FIX_START */
+.top-banner{background:var(--cream)!important;padding:8px 20px!important;font-size:9px!important;letter-spacing:.12em!important;gap:10px!important;color:rgba(26,24,22,.62)!important;line-height:1.45!important;}
+.top-banner-dot{width:5px!important;height:5px!important;min-width:5px!important;min-height:5px!important;}
+.top-banner > span:not(.top-banner-dot){white-space:normal!important;text-align:center!important;}
+/* FORMATS_TOPBAR_FIX_END */
+'''
+          s = s.replace('</style>', fix + '</style>', 1)
+          p.write_text(s, encoding='utf-8')
+          PY
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Remove hero photo and normalize top banner
+          commit_message: Restore correct formats hero photo and top bar
