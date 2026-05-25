@@ -5,6 +5,7 @@ on:
       - 'formats.html'
       - 'assets/hero_seance_1to1_reference.webp.b64'
       - '.github/workflows/clean-formats.yml'
+      - '.github/workflows/trigger-clean-formats.txt'
   workflow_dispatch:
 permissions:
   contents: write
