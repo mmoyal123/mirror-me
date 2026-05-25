@@ -14,30 +14,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Restore photo and adjust top bar
+        with:
+          fetch-depth: 0
+      - name: Restore full formats page and apply final fixes
         run: |
+          git show f4a77fe6b02e18b022db390100d10c227aaab41a:formats.html > formats.html
           python3 - <<'PY'
           from pathlib import Path
           import re
+
           p = Path('formats.html')
-          data = Path('assets/hero_seance_1to1_reference.webp.b64').read_text(encoding='utf-8').strip()
           s = p.read_text(encoding='utf-8')
+          data = Path('assets/hero_seance_1to1_reference.webp.b64').read_text(encoding='utf-8').strip()
+
           s = s.replace('&lt;!-- formats_FINAL_clean · consolidated from V15, no patch stacking --&gt;', '')
           s = s.replace('<!-- formats_FINAL_clean · consolidated from V15, no patch stacking -->', '')
-          s = re.sub(r'\s*<div class="mm-photo-panel reveal d3">.*?</div>', '', s, flags=re.S)
-          hero = '\n<div class="mm-photo-panel reveal d3"><img alt="Séance de coaching 1:1 dans un intérieur lumineux" decoding="async" loading="eager" src="data:image/webp;base64,' + data + '"/></div>\n'
-          s = re.sub(r'(<p class="page-sub reveal d3">.*?</p>)\s*(</section>\s*<!-- ─── Marquee ─── -->)', lambda m: m.group(1) + hero + m.group(2), s, count=1, flags=re.S)
-          s = re.sub(r'/\* FORMATS_TOPBAR_FIX_START \*/.*?/\* FORMATS_TOPBAR_FIX_END \*/\s*', '', s, flags=re.S)
-          fix = '''
-/* FORMATS_TOPBAR_FIX_START */
+
+          s = re.sub(r'<style id="formats-final-fix">.*?</style>\s*', '', s, flags=re.S)
+
+          hero = '<div class="mm-photo-panel reveal d3"><img alt="Séance de coaching en 1:1 dans un intérieur lumineux" decoding="async" loading="eager" src="data:image/webp;base64,' + data + '"/></div>'
+
+          s = re.sub(r'\s*<div class="mm-photo-panel reveal d3">.*?</div>\s*', '\n', s, count=1, flags=re.S)
+          s = re.sub(
+              r'(<p class="page-sub reveal d3">.*?</p>)\s*(</section>\s*<!-- ─── Marquee ─── -->)',
+              lambda m: m.group(1) + '\n' + hero + '\n' + m.group(2),
+              s,
+              count=1,
+              flags=re.S
+          )
+
+          final_css = '''
+<style id="formats-final-fix">
 .top-banner{background:var(--cream)!important;padding:8px 20px!important;font-size:9px!important;letter-spacing:.12em!important;gap:10px!important;color:rgba(26,24,22,.62)!important;line-height:1.45!important;}
 .top-banner-dot{width:5px!important;height:5px!important;min-width:5px!important;min-height:5px!important;}
-.top-banner > span:not(.top-banner-dot){white-space:normal!important;text-align:center!important;}
-/* FORMATS_TOPBAR_FIX_END */
+.top-banner>span:not(.top-banner-dot){white-space:normal!important;text-align:center!important;}
+</style>
 '''
-          s = s.replace('</style>', fix + '</style>', 1)
+          s = s.replace('</head>', final_css + '</head>', 1)
           p.write_text(s, encoding='utf-8')
           PY
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Restore correct formats hero photo and top bar
+          commit_message: Restore full formats page with correct hero and top bar
