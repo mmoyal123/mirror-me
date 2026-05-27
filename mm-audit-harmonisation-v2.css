@@ -1,0 +1,189 @@
+/* MIRROR ME — Audit harmonisation V2
+   Lecture : Formats = page étalon.
+   Objectif : corriger les incohérences de titres, sections, closing et photos
+   sans modifier le contenu ni la structure.
+*/
+
+/* 1. Échelle typographique commune */
+.page-title,
+.hero-title {
+  font-size: clamp(31px, 4.2vw, 58px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.04em !important;
+  max-width: 900px !important;
+}
+
+.t-large,
+.t-xl {
+  font-size: clamp(24px, 3vw, 40px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.page-sub,
+.hero-sub,
+.body,
+.card-body,
+.step-body {
+  font-size: 14px !important;
+  line-height: 1.78 !important;
+}
+
+/* 2. Pages intérieures : même respiration que Formats */
+.page-hero {
+  min-height: 64vh !important;
+  padding: 90px 60px 76px !important;
+}
+
+.page-hero-bg {
+  font-size: clamp(54px, 10vw, 140px) !important;
+  opacity: .028 !important;
+}
+
+/* 3. Vision : différente mais contrôlée */
+body.home-page .hero {
+  min-height: 68vh !important;
+  padding: 92px 60px 84px !important;
+}
+
+body.home-page .hero-title {
+  max-width: 900px !important;
+}
+
+body.home-page .hero-sub {
+  max-width: 620px !important;
+}
+
+/* 4. Closing : arrêter les variations trop grandes */
+.closing {
+  padding: 116px 60px 126px !important;
+}
+
+.closing-title {
+  font-size: clamp(30px, 3.5vw, 46px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+  max-width: 680px !important;
+  margin: 0 auto 28px !important;
+}
+
+.closing-sub {
+  font-size: 14px !important;
+  line-height: 1.82 !important;
+  max-width: 580px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 5. Photo de page : même présence, même cadre */
+.mm-page-photo,
+.mm-hero-photo {
+  width: min(34vw, 520px) !important;
+  max-width: 520px !important;
+  aspect-ratio: 4 / 3 !important;
+}
+
+.mm-page-photo img,
+.mm-hero-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 6. Photo Mika / bas de page : plus de variations par pourcentage */
+.mm-mika-section {
+  padding: 86px 24px 96px !important;
+}
+
+.mm-mika-wrap {
+  max-width: 880px !important;
+}
+
+.mm-mika-photo,
+.v65-guide-photo > div {
+  width: min(100%, 360px) !important;
+  max-width: 360px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.mm-mika-photo img,
+.v65-guide-photo img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
+/* 7. Footer pré-signature : même densité sur toutes les pages */
+.footer-pre {
+  padding: 76px 60px 96px !important;
+  gap: 72px !important;
+}
+
+.photomaton {
+  width: 140px !important;
+  flex: 0 0 140px !important;
+}
+
+/* 8. Territoires : grille photos plus stable après ajout BTC12/BTC13 */
+.territoires-page .mm-card-image {
+  aspect-ratio: 4 / 5 !important;
+}
+
+.territoires-page .mm-card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 9. Mobile */
+@media (max-width: 900px) {
+  .page-hero,
+  body.home-page .hero {
+    min-height: auto !important;
+    padding: 78px 22px 64px !important;
+  }
+
+  .page-title,
+  .hero-title {
+    font-size: clamp(34px, 10vw, 46px) !important;
+    line-height: 1.06 !important;
+  }
+
+  .t-large,
+  .t-xl {
+    font-size: clamp(28px, 8vw, 38px) !important;
+    line-height: 1.10 !important;
+  }
+
+  .closing {
+    padding: 88px 22px 96px !important;
+  }
+
+  .closing-title {
+    font-size: clamp(32px, 9vw, 44px) !important;
+    margin-bottom: 24px !important;
+  }
+
+  .mm-page-photo,
+  .mm-hero-photo {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    margin: 42px auto 0 !important;
+  }
+
+  .mm-mika-photo,
+  .v65-guide-photo > div {
+    max-width: 320px !important;
+  }
+
+  .footer-pre {
+    padding: 64px 22px 82px !important;
+    gap: 42px !important;
+  }
+}
