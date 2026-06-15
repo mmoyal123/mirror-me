@@ -1,0 +1,69 @@
+name: Patch BTC titles
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-btc-titles.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch coaching and territoires titles
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          targets = {
+              'coaching.html': [
+                  ("Neutraliser l'automatisme.", "Qu’est-ce qui te protège instinctivement ?"),
+                  ("Neutraliser l’automatisme.", "Qu’est-ce qui te protège instinctivement ?"),
+              ],
+              'territoires.html': [
+                  ("La matérialisation du conditionnement.", "L’univers Brise Tes Chaînes."),
+              ],
+          }
+
+          changed = False
+          for path, replacements in targets.items():
+              p = Path(path)
+              if not p.exists():
+                  raise SystemExit(f"Missing file: {path}")
+              text = p.read_text(encoding='utf-8', errors='ignore')
+              before = text
+              for old, new in replacements:
+                  text = text.replace(old, new)
+
+              if path == 'coaching.html':
+                  text = re.sub(r'<title>.*?</title>', '<title>Qu’est-ce qui te protège instinctivement ? — MIRROR ME</title>', text, count=1, flags=re.S)
+                  text = re.sub(r'(<meta[^>]+property=["\']og:title["\'][^>]+content=["\'])([^"\']*)(["\'])', r'\1Qu’est-ce qui te protège instinctivement ? — MIRROR ME\3', text, count=1)
+              if path == 'territoires.html':
+                  text = re.sub(r'<title>.*?</title>', '<title>L’univers Brise Tes Chaînes. — MIRROR ME</title>', text, count=1, flags=re.S)
+                  text = re.sub(r'(<meta[^>]+property=["\']og:title["\'][^>]+content=["\'])([^"\']*)(["\'])', r'\1L’univers Brise Tes Chaînes. — MIRROR ME\3', text, count=1)
+
+              if text != before:
+                  p.write_text(text, encoding='utf-8')
+                  changed = True
+                  print(f"patched {path}")
+              else:
+                  print(f"no change in {path}")
+
+          if not changed:
+              raise SystemExit("No title replacement was applied")
+          PY
+      - name: Commit title changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add coaching.html territoires.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Met à jour les titres coaching et territoires"
+          git push
