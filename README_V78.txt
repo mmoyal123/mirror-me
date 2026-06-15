@@ -5,7 +5,7 @@ Corrections appliquées :
 - menu mobile fullscreen stable, rubriques visibles, plus de superposition avec le contenu
 - scroll bloqué pendant l’ouverture du menu mobile
 - lien Cal public conservé partout : https://cal.eu/michael-moyal-jdunzg
-- lien questionnaire conservé partout : https://tally.so/r/RGZOQj
+- lien questionnaire conservé partout : https://tally.so/r/obxxjM
 - photo Guide réduite et stabilisée
 - rel=noopener ajouté sur liens externes
 
