@@ -1,0 +1,61 @@
+name: Patch Tally links
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-tally-links.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Replace invalid Tally form URL
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          old_urls = [
+              'https://tally.so/r/RGZOQj',
+              'http://tally.so/r/RGZOQj',
+              'tally.so/r/RGZOQj',
+          ]
+          new_url = 'https://tally.so/r/obxxjM'
+          exts = {'.html', '.htm', '.js', '.css', '.txt', '.md'}
+          changed_files = []
+
+          for p in Path('.').rglob('*'):
+              if not p.is_file():
+                  continue
+              if '.git' in p.parts:
+                  continue
+              if p.suffix.lower() not in exts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='ignore')
+              before = text
+              for old in old_urls:
+                  text = text.replace(old, new_url)
+              if text != before:
+                  p.write_text(text, encoding='utf-8')
+                  changed_files.append(str(p))
+
+          if not changed_files:
+              raise SystemExit('No invalid Tally link found')
+          print('patched files:')
+          for f in changed_files:
+              print(f)
+          PY
+      - name: Commit Tally link fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet && exit 0
+          git commit -m "Corrige le lien Tally du questionnaire"
+          git push
