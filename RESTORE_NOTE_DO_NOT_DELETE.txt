@@ -1,0 +1,2 @@
+Backup note before restoring main to pre-BTC Business state.
+This file is created only to capture a safety commit before reset.
