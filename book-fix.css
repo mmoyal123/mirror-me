@@ -1,11 +1,14 @@
 /* MIRROR ME — hide guide bottom visual */
 #guide .resource-guide-book,
-#guide .resource-guide-book img{
+#guide .resource-guide-book img,
+#guide img[src*="guide-book-cutout"],
+#guide img[src*="guide-book-cutout-embedded"]{
   display:none!important;
   width:0!important;
   max-width:0!important;
   min-width:0!important;
   height:0!important;
+  max-height:0!important;
   margin:0!important;
   padding:0!important;
   overflow:hidden!important;
