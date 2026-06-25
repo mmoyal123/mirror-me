@@ -446,6 +446,18 @@ footer{
   background:#000;
 }
 
+
+.mobile-menu-native{display:none}
+.mobile-menu-native summary{list-style:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(26,24,22,.14);border-radius:999px;background:#F7F5F0}
+.mobile-menu-native summary::-webkit-details-marker{display:none}
+.mobile-menu-native-panel{position:fixed;top:74px;left:18px;right:18px;background:#F7F5F0;border:1px solid rgba(26,24,22,.10);border-radius:22px;padding:20px;z-index:9999;box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.mobile-menu-native-panel a{display:block;padding:14px 0;text-decoration:none;color:#1A1816;border-bottom:1px solid rgba(26,24,22,.08);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.mobile-menu-native-panel a:last-child{border-bottom:0}
+@media(max-width:760px){
+  .mobile-menu-native{display:block!important;margin-left:auto}
+  .nav-links,.nav-cta{display:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -461,6 +473,28 @@ footer{
 <li><a href="#legitimite">Légitimité</a></li>
 </ul>
 <a class="nav-cta" href="#contact">Diagnostic retail →</a>
+<details class="mobile-menu-native">
+<summary aria-label="Ouvrir le menu">
+<svg fill="none" height="16" viewBox="0 0 22 16" width="22" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#1A1816" height="1.5" rx="0.75" width="22"></rect>
+<rect fill="#1A1816" height="1.5" rx="0.75" width="22" y="7"></rect>
+<rect fill="#1A1816" height="1.5" rx="0.75" width="22" y="14"></rect>
+</svg>
+</summary>
+<div class="mobile-menu-native-panel">
+<a href="index.html">Accueil</a>
+<a href="coaching.html">Coaching</a>
+<a href="formats.html">Formats</a>
+<a href="vision.html">Vision</a>
+<a href="territoires.html">Territoires</a>
+<a href="btc-business-definitif.html">BTC Business</a>
+<a href="guide.html">Guide</a>
+<a href="https://chatgpt.com/g/g-6a031f13464c819196a2836686fff251-mirror-me" rel="noopener" target="_blank">Chat IA</a>
+<a href="https://mickaelmirror.lovable.app/" rel="noopener" target="_blank">Coaching IA</a>
+<a href="https://tally.so/r/RGZOQj" rel="noopener" target="_blank">Questionnaire →</a>
+</div>
+</details>
+
 </nav>
 
 <main>
@@ -594,5 +628,22 @@ footer{
 <p class="footer-tag">Mickaël Moyal · Coach Retail Premium & Luxe</p>
 </div>
 </footer>
+
+<script>
+(function(){
+  var details = document.querySelector('.mobile-menu-native');
+  if(!details) return;
+  details.addEventListener('toggle', function(){
+    document.body.style.overflow = details.open ? 'hidden' : '';
+  });
+  details.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      details.open = false;
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
