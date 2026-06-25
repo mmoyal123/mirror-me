@@ -458,21 +458,83 @@ footer{
   .nav-links,.nav-cta{display:none!important}
 }
 
+
+/* BTC GLOBAL MOBILE MENU */
+.mobile-menu-native{display:none}
+.mobile-menu-native summary{
+  list-style:none;
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  border:1px solid rgba(26,24,22,.14);
+  border-radius:999px;
+  background:#F7F5F0;
+}
+.mobile-menu-native summary::-webkit-details-marker{display:none}
+.mobile-menu-native-panel{
+  position:fixed;
+  top:74px;
+  left:18px;
+  right:18px;
+  background:#F7F5F0;
+  border:1px solid rgba(26,24,22,.10);
+  border-radius:22px;
+  padding:20px;
+  z-index:9999;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+.mobile-menu-native-panel a{
+  display:block;
+  padding:14px 0;
+  text-decoration:none;
+  color:#1A1816;
+  border-bottom:1px solid rgba(26,24,22,.08);
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.mobile-menu-native-panel a:last-child{border-bottom:0}
+
+@media(max-width:900px){
+  .nav-links,
+  .nav-cta{
+    display:none!important;
+  }
+  .mobile-menu-native{
+    display:block!important;
+    margin-left:auto;
+  }
+}
+
+@media(min-width:901px){
+  .mobile-menu-native{
+    display:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
 <div class="top-banner"><span class="top-banner-dot"></span><span>The Business Vitality Method™ · Retail Premium & Luxe</span><span class="top-banner-dot"></span></div>
 
 <nav id="nav">
-<a class="nav-logo" href="#accueil"><span class="nav-logo-text">BTC Business</span></a>
+<a class="nav-logo" href="index.html"><span class="nav-logo-text">Mirror Me</span></a>
+
 <ul class="nav-links">
-<li><a href="#accueil">Accueil</a></li>
-<li><a href="#methode">La méthode</a></li>
-<li><a href="#terrain">Terrain</a></li>
-<li><a href="#leviers">Leviers retail</a></li>
-<li><a href="#legitimite">Légitimité</a></li>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="coaching.html">Coaching</a></li>
+<li><a href="formats.html">Formats</a></li>
+<li><a href="vision.html">Vision</a></li>
+<li><a href="territoires.html">Territoires</a></li>
+<li><a class="active" href="btc-business-definitif.html">BTC Business</a></li>
+<li><a href="guide.html">Guide</a></li>
 </ul>
+
 <a class="nav-cta" href="#contact">Diagnostic retail →</a>
+
 <details class="mobile-menu-native">
 <summary aria-label="Ouvrir le menu">
 <svg fill="none" height="16" viewBox="0 0 22 16" width="22" xmlns="http://www.w3.org/2000/svg">
@@ -481,6 +543,7 @@ footer{
 <rect fill="#1A1816" height="1.5" rx="0.75" width="22" y="14"></rect>
 </svg>
 </summary>
+
 <div class="mobile-menu-native-panel">
 <a href="index.html">Accueil</a>
 <a href="coaching.html">Coaching</a>
@@ -489,12 +552,9 @@ footer{
 <a href="territoires.html">Territoires</a>
 <a href="btc-business-definitif.html">BTC Business</a>
 <a href="guide.html">Guide</a>
-<a href="https://chatgpt.com/g/g-6a031f13464c819196a2836686fff251-mirror-me" rel="noopener" target="_blank">Chat IA</a>
-<a href="https://mickaelmirror.lovable.app/" rel="noopener" target="_blank">Coaching IA</a>
-<a href="https://tally.so/r/RGZOQj" rel="noopener" target="_blank">Questionnaire →</a>
+<a href="#contact">Diagnostic retail</a>
 </div>
 </details>
-
 </nav>
 
 <main>
