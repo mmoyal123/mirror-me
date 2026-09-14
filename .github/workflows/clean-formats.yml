@@ -1,13 +1,41 @@
-name: Clean formats page
+name: Update professional title
 
 on:
+  push:
+    paths:
+      - '.github/workflows/clean-formats.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  clean:
+  update-title:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Workflow disabled. Manual cleanup only."
+      - uses: actions/checkout@v4
+      - name: Replace old professional title across HTML
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          old = "Coach en intelligence relationnelle"
+          new = "Coach en dynamiques relationnelles et comportementales"
+          changed = []
+          for p in Path('.').rglob('*.html'):
+              text = p.read_text(encoding='utf-8')
+              if old in text:
+                  p.write_text(text.replace(old, new), encoding='utf-8')
+                  changed.append(str(p))
+          print("Changed:", changed)
+          PY
+      - name: Commit title update
+        run: |
+          if git diff --quiet; then
+            echo "No change needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html'
+          git commit -m "Update coaching title to dynamiques relationnelles et comportementales"
+          git push
