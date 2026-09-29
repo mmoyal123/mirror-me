@@ -119,6 +119,37 @@
   }
 
 
+
+  if (!home && window.innerWidth > 900) {
+    const chapterPages = document.body.matches('.page-explorations, .page-distinctions, .page-sources');
+    const scenes = chapterPages
+      ? [...document.querySelectorAll('.page-hero, .inquiry')]
+      : [...document.querySelectorAll('.page-hero, .about-hero, .approach-visual, main > .section')];
+
+    if (scenes.length > 1) {
+      const rail = document.createElement('div');
+      rail.className = 'scene-counter';
+      rail.setAttribute('aria-hidden', 'true');
+      rail.innerHTML = '<span class="scene-current">01</span><i></i><span class="scene-total">' +
+        String(scenes.length).padStart(2, '0') + '</span><em>MIRROR ME</em>';
+      document.body.appendChild(rail);
+      const current = rail.querySelector('.scene-current');
+
+      const sceneObserver = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a,b) => Math.abs(a.boundingClientRect.top - innerHeight * .34) - Math.abs(b.boundingClientRect.top - innerHeight * .34))[0];
+        if (visible) {
+          const idx = scenes.indexOf(visible.target) + 1;
+          current.textContent = String(idx).padStart(2, '0');
+          rail.classList.add('is-active');
+        }
+      }, { rootMargin: '-18% 0px -52% 0px', threshold: 0 });
+
+      scenes.forEach(scene => sceneObserver.observe(scene));
+    }
+  }
+
   const pageClass = [...document.body.classList].find(c => c.startsWith('page-'));
   const pageMap = {
     'page-home': '/',
