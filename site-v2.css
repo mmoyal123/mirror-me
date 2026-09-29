@@ -158,9 +158,10 @@ a{color:inherit}a:focus-visible,summary:focus-visible{outline:2px solid currentC
   .mobile-menu summary{font-size:0}
   .mobile-menu summary:after{content:"Menu";font-size:9px;letter-spacing:.15em;text-transform:uppercase}
   .mobile-menu[open] summary:after{content:"Fermer"}
+  body:has(.mobile-menu[open]){overflow:hidden}
   .mobile-panel{
-    position:absolute;top:54px;right:-16px;
-    width:100vw;height:calc(100dvh - 54px);
+    position:fixed;top:54px;left:0;right:0;
+    width:auto;height:calc(100dvh - 54px);
     background:#090909;color:#fff;
     display:flex;flex-direction:column;
     padding:24px 18px 36px;
