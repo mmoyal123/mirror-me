@@ -11,6 +11,8 @@
   const progressBar = progress.firstElementChild;
 
   const revealSelectors = [
+    '.home-hero-meta > *',
+    '.home-hero-copy > *',
     '.page-hero > .wrap > *',
     '.section-head > *',
     '.home-question .question',
