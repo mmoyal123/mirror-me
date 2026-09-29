@@ -197,3 +197,9 @@ a{color:inherit}img{display:block;max-width:100%}.wrap{width:min(calc(100% - 52p
   }
   .home-hero img{object-position:center 26%}
 }
+
+@media(max-width:900px){
+  .mobile-menu summary{font-size:0}
+  .mobile-menu summary:after{content:"Menu";font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+  .mobile-menu[open] summary:after{content:"Fermer"}
+}
