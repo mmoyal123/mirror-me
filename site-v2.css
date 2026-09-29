@@ -203,3 +203,40 @@ a{color:inherit}img{display:block;max-width:100%}.wrap{width:min(calc(100% - 52p
   .mobile-menu summary:after{content:"Menu";font-size:9px;letter-spacing:.15em;text-transform:uppercase}
   .mobile-menu[open] summary:after{content:"Fermer"}
 }
+
+/* Intellectual depth system */
+.inquiry-stack{display:grid;gap:0;border-top:1px solid #111}
+.inquiry{display:grid;grid-template-columns:.34fr 1.66fr;gap:56px;padding:46px 0;border-bottom:1px solid #111}
+.inquiry-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:5px}
+.inquiry-body{max-width:860px}
+.inquiry-body h3{margin:0 0 20px;font-size:clamp(28px,3vw,44px);line-height:1;letter-spacing:-.04em;font-weight:500}
+.inquiry-body h4{margin:30px 0 8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.inquiry-body p{margin:0 0 16px;font-size:16px;line-height:1.58;color:#41403c}
+.inquiry-body p:last-child{margin-bottom:0}
+.inquiry-body .question-line{font-size:20px;line-height:1.35;letter-spacing:-.015em;color:#111}
+.epistemic-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #fff;border-left:1px solid #fff;margin-top:38px}
+.epistemic-card{min-height:180px;padding:18px;border-right:1px solid #fff;border-bottom:1px solid #fff}
+.epistemic-card h3{margin:0 0 28px;font-size:18px;font-weight:500}
+.epistemic-card p{margin:0;font-size:13px;line-height:1.5;color:#b9b9b4}
+.axis-note{margin-top:28px;max-width:860px;font-size:18px;line-height:1.48;letter-spacing:-.01em}
+.concept-line{font-size:clamp(24px,2.8vw,40px);line-height:1.08;letter-spacing:-.035em;max-width:930px;margin:0}
+.actor-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #111;border-left:1px solid #111;margin-top:36px}
+.actor-card{min-height:210px;padding:22px;border-right:1px solid #111;border-bottom:1px solid #111}
+.actor-card h3{margin:0 0 42px;font-size:24px;font-weight:500;letter-spacing:-.03em}
+.actor-card p{margin:0;font-size:14px;line-height:1.5;color:#4b4945}
+@media(max-width:900px){
+ .inquiry{grid-template-columns:1fr;gap:12px;padding:32px 0}
+ .inquiry-label{font-size:8px}
+ .inquiry-body h3{font-size:26px}
+ .inquiry-body h4{margin-top:24px;font-size:8px}
+ .inquiry-body p{font-size:15px}
+ .inquiry-body .question-line{font-size:18px}
+ .epistemic-grid{grid-template-columns:1fr 1fr}
+ .epistemic-card{min-height:150px}
+ .actor-grid{grid-template-columns:1fr}
+ .actor-card{min-height:160px}
+}
+@media(max-width:520px){
+ .epistemic-grid{grid-template-columns:1fr}
+ .epistemic-card{min-height:auto}
+}
