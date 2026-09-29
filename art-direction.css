@@ -246,10 +246,14 @@ body:before{
 .page-coaching .page-hero:before,
 .page-sources .page-hero:before,
 .page-distinctions .page-hero:before{
-  position:absolute;z-index:-1;right:.045em;bottom:-.16em;
+  position:absolute;z-index:0;right:.045em;bottom:-.16em;
   font-size:clamp(150px,28vw,430px);font-weight:500;line-height:.75;letter-spacing:-.08em;
   color:rgba(9,9,9,.04);pointer-events:none;white-space:nowrap
 }
+.page-approach .page-hero>.wrap,
+.page-coaching .page-hero>.wrap,
+.page-sources .page-hero>.wrap,
+.page-distinctions .page-hero>.wrap{position:relative;z-index:1}
 .page-approach .page-hero:before{content:"?"}
 .page-coaching .page-hero:before{content:"→"}
 .page-distinctions .page-hero{background:var(--stone)}
