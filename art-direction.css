@@ -179,7 +179,7 @@ body:before{
   .inquiry-body{padding-left:34px;border-left:1px solid rgba(17,17,17,.12)}
   .inquiry-label{position:sticky;top:96px;align-self:start}
 }
-.page-explorations .inquiry,.page-distinctions .inquiry{scroll-margin-top:88px}
+.page-explorations .inquiry,.page-distinctions .inquiry{position:relative;scroll-margin-top:88px}
 .page-explorations .inquiry-stack{counter-reset:mmchapter}
 .page-explorations .inquiry{counter-increment:mmchapter}
 .page-explorations .inquiry:after{
