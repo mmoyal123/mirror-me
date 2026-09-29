@@ -48,6 +48,8 @@
     '.concept-line',
     '.statement',
     '.section.dark .copy',
+    '.about-photo',
+    '.approach-visual-media',
     '.about-copy > *',
     '.approach-visual-copy > *'
   ];
@@ -113,6 +115,26 @@
         section.style.setProperty('--pointer-x', `${e.clientX - r.left}px`);
         section.style.setProperty('--pointer-y', `${e.clientY - r.top}px`);
       }, { passive: true });
+    });
+  }
+
+
+  const pageClass = [...document.body.classList].find(c => c.startsWith('page-'));
+  const pageMap = {
+    'page-home': '/',
+    'page-explorations': '/explorations/',
+    'page-approach': '/approche/',
+    'page-coaching': '/coaching/',
+    'page-about': '/mickael/',
+    'page-resources': '/ressources/',
+    'page-sources': '/sources/',
+    'page-distinctions': '/distinctions/'
+  };
+  const currentPath = pageMap[pageClass];
+  if (currentPath) {
+    document.querySelectorAll('.nav-links a, .mobile-panel a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath) link.setAttribute('aria-current', 'page');
     });
   }
 
