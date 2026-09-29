@@ -3,6 +3,28 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   root.classList.add('motion-ready');
 
+  const home = document.body.classList.contains('page-home');
+  if (home && !reduceMotion) {
+    let seen = false;
+    try { seen = sessionStorage.getItem('mmIntroSeen') === '1'; } catch (_) {}
+    if (!seen) {
+      const intro = document.createElement('div');
+      intro.className = 'mm-intro';
+      intro.setAttribute('aria-hidden', 'true');
+      intro.innerHTML = '<div class="mm-intro-word">MIRROR ME</div><span class="mm-intro-rule"></span>';
+      document.body.prepend(intro);
+      document.body.classList.add('intro-lock');
+      requestAnimationFrame(() => intro.classList.add('is-active'));
+      window.setTimeout(() => intro.classList.add('is-leaving'), 820);
+      window.setTimeout(() => {
+        intro.remove();
+        document.body.classList.remove('intro-lock');
+      }, 1420);
+      try { sessionStorage.setItem('mmIntroSeen', '1'); } catch (_) {}
+    }
+  }
+
+
   const progress = document.createElement('div');
   progress.className = 'scroll-progress';
   progress.setAttribute('aria-hidden', 'true');
