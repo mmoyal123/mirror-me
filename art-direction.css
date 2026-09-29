@@ -430,3 +430,21 @@ body:before{
     background:rgba(247,247,244,.98);color:#090909;border-bottom-color:#111;backdrop-filter:blur(18px)
   }
 }
+
+/* Cinematic scene rail */
+.scene-counter{
+  position:fixed;right:17px;top:50%;z-index:45;transform:translateY(-50%);
+  display:grid;grid-template-columns:auto 42px auto;align-items:center;gap:8px;
+  font-size:9px;letter-spacing:.15em;font-variant-numeric:tabular-nums;
+  color:rgba(9,9,9,.44);opacity:0;transition:opacity .45s ease
+}
+.scene-counter.is-active{opacity:1}
+.scene-counter i{display:block;height:1px;background:currentColor;opacity:.45}
+.scene-counter em{
+  position:absolute;right:-2px;top:calc(100% + 22px);
+  writing-mode:vertical-rl;font-style:normal;font-size:8px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(9,9,9,.24)
+}
+.page-sources .scene-counter{color:rgba(9,9,9,.44)}
+@media(max-width:1100px){.scene-counter{right:8px;opacity:.55}.scene-counter em{display:none}}
+@media(max-width:900px){.scene-counter{display:none!important}}
