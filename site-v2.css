@@ -43,3 +43,122 @@ a{color:inherit}img{display:block;max-width:100%}.wrap{width:min(calc(100% - 52p
 
 @media(max-width:900px){.wrap{width:min(calc(100% - 28px),var(--max))}.nav-links{display:none}.menu-btn{display:block}.home-hero,.home-hero-inner{min-height:68svh}.home-hero-meta{font-size:8px}.section{padding:66px 0}.section-head,.topic-row{grid-template-columns:1fr;gap:18px}.lens-grid,.resource-grid{grid-template-columns:1fr}.explore-grid{grid-template-columns:1fr}.about-hero,.approach-visual{grid-template-columns:1fr}.about-photo,.approach-visual-media{min-height:0;aspect-ratio:4/5}.about-copy{padding:32px 20px 38px}.approach-visual-copy{padding:30px 20px 34px;gap:36px}.offer{grid-template-columns:1fr;gap:22px}.footer-grid{grid-template-columns:1fr;gap:18px}}
 @media(max-width:520px){.home-hero h1{font-size:30px}.home-question{padding:76px 0 68px}.home-question .question{font-size:12.5vw}.section h2,.page-hero h1{font-size:11vw}.statement{font-size:11vw}}
+
+/* Mobile design — intentionally distinct from desktop */
+@media(max-width:900px){
+  html{scroll-padding-top:54px}
+  body{font-size:15px}
+  body.menu-open{overflow:hidden}
+  .wrap{width:calc(100% - 32px);max-width:none}
+
+  .site-header{height:54px;background:rgba(247,247,244,.98)}
+  .nav{min-height:54px;height:54px}
+  .brand{font-size:11px;letter-spacing:.15em}
+  .menu-btn{display:block;font-size:9px;letter-spacing:.15em;color:var(--black);cursor:pointer}
+  .nav-links{display:none}
+  .mobile-nav{
+    display:none;position:fixed;z-index:49;top:54px;left:0;right:0;bottom:0;
+    padding:26px 18px 36px;background:#090909;color:#fff;overflow:auto
+  }
+  .mobile-nav.open{display:flex;flex-direction:column}
+  .mobile-nav a{
+    display:flex;align-items:center;min-height:61px;padding:0;
+    border-bottom:1px solid rgba(255,255,255,.24);
+    font-size:21px;line-height:1;letter-spacing:-.025em;text-transform:none
+  }
+  .mobile-nav a:last-child{margin-top:24px;min-height:42px;border:0;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+
+  .home-hero,.home-hero-inner{min-height:72svh}
+  .home-hero img{object-position:center center}
+  .home-hero:after{background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.04) 45%,rgba(0,0,0,.68))}
+  .home-hero-inner{padding:18px 0 22px}
+  .home-hero-meta{font-size:8px;letter-spacing:.13em}
+  .home-hero-meta span:last-child{display:none}
+  .home-hero-copy{max-width:92%}
+  .home-hero h1{max-width:330px;margin-bottom:9px;font-size:27px;line-height:1.02;letter-spacing:-.035em}
+  .home-hero p{max-width:325px;font-size:14.5px;line-height:1.4}
+
+  .section{padding:52px 0}
+  .section-head{grid-template-columns:1fr;gap:12px;margin-bottom:28px}
+  .kicker{padding:0;font-size:8px;letter-spacing:.15em}
+  .section h2,.page-hero h1{font-size:31px;line-height:1.01;letter-spacing:-.04em}
+  .lead{font-size:19px;line-height:1.2;letter-spacing:-.02em}
+  .copy{font-size:15px;line-height:1.55}
+
+  .home-question{padding:60px 0 56px}
+  .home-question .question{max-width:330px;font-size:35px;line-height:.98;letter-spacing:-.045em}
+  .home-question .answer{margin-top:22px;max-width:330px;font-size:15px;line-height:1.55}
+
+  .lens-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lens-card{min-height:158px;padding:16px}
+  .lens-card h3{font-size:20px;line-height:1.03;letter-spacing:-.03em}
+  .lens-card p{margin-top:26px;font-size:11.5px;line-height:1.4}
+
+  .explore-grid{grid-template-columns:1fr}
+  .explore-card{min-height:145px;padding:17px}
+  .explore-card small{font-size:8px}
+  .explore-card strong{max-width:330px;font-size:25px;line-height:1.04;letter-spacing:-.035em}
+
+  .statement{max-width:340px;font-size:34px;line-height:.99;letter-spacing:-.045em}
+  .actions{gap:16px;margin-top:24px}
+  .btn{font-size:9px;letter-spacing:.14em}
+
+  .page-hero{padding:54px 0 40px}
+  .page-hero .eyebrow{margin-bottom:18px;font-size:8px}
+  .page-hero p{margin-top:22px;max-width:340px;font-size:17px;line-height:1.28;letter-spacing:-.015em}
+
+  .prose{max-width:none;margin:0}
+  .prose p{font-size:15px;line-height:1.58}
+  .prose h3{margin:36px 0 14px;font-size:25px}
+
+  .topic-row{grid-template-columns:1fr;gap:10px;padding:28px 0}
+  .topic-row .topic-title{font-size:8px}
+  .topic-row h3{margin-bottom:14px;font-size:25px;line-height:1.04;letter-spacing:-.035em}
+  .topic-row p{font-size:15px;line-height:1.55}
+
+  .offer{grid-template-columns:1fr;gap:18px;padding:30px 0}
+  .offer h3{font-size:28px;line-height:1.02;letter-spacing:-.04em}
+  .offer-meta{font-size:14.5px;line-height:1.55}
+
+  .about-hero{grid-template-columns:1fr}
+  .about-photo{min-height:0;height:auto;aspect-ratio:4/5;max-height:70svh}
+  .about-photo img{object-position:center 30%}
+  .about-copy{padding:32px 16px 40px}
+  .about-copy .kicker{margin-bottom:16px}
+  .about-copy h1{margin-bottom:22px;font-size:31px;line-height:1.01;letter-spacing:-.04em}
+  .about-copy p{font-size:15px;line-height:1.55}
+
+  .approach-visual{grid-template-columns:1fr}
+  .approach-visual-media{min-height:0;aspect-ratio:4/5;max-height:70svh}
+  .approach-visual-media img{object-position:center 28%}
+  .approach-visual-copy{padding:30px 16px 36px;gap:34px}
+  .approach-visual-copy h2{font-size:29px;line-height:1.02;letter-spacing:-.04em}
+  .approach-visual-copy p{margin-top:18px;font-size:14.5px;line-height:1.52}
+
+  .resource-grid{grid-template-columns:1fr}
+  .resource-card{min-height:190px;padding:18px}
+  .resource-card h3{font-size:25px}
+  .resource-card p{font-size:13.5px;line-height:1.5}
+
+  .footer{padding:26px 0 34px}
+  .footer-grid{grid-template-columns:1fr;gap:16px}
+  .footer strong{font-size:10px}
+  .footer small,.footer a{font-size:10px;line-height:1.5}
+}
+
+@media(max-width:520px){
+  .wrap{width:calc(100% - 28px)}
+  .home-hero,.home-hero-inner{min-height:70svh}
+  .home-hero h1{font-size:25px}
+  .home-hero p{font-size:14px}
+  .section{padding:48px 0}
+  .section h2,.page-hero h1{font-size:30px}
+  .home-question{padding:54px 0 50px}
+  .home-question .question{font-size:34px}
+  .statement{font-size:32px}
+  .lens-card{min-height:150px;padding:14px}
+  .lens-card h3{font-size:19px}
+  .lens-card p{font-size:11px}
+  .explore-card strong{font-size:24px}
+  .mobile-nav a{font-size:20px}
+}
