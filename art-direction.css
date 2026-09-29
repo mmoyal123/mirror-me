@@ -173,3 +173,47 @@ body:before{
   .home-hero:before,.page-hero:after,.footer:before{animation:none!important;opacity:1;transform:none;width:100%}
   .scroll-progress{display:none}
 }
+
+/* Page-specific editorial identities */
+@media(min-width:901px){
+  .inquiry-body{padding-left:34px;border-left:1px solid rgba(17,17,17,.12)}
+  .inquiry-label{position:sticky;top:96px;align-self:start}
+}
+.page-explorations .inquiry,.page-distinctions .inquiry{scroll-margin-top:88px}
+.page-explorations .inquiry-stack{counter-reset:mmchapter}
+.page-explorations .inquiry{counter-increment:mmchapter}
+.page-explorations .inquiry:after{
+  content:counter(mmchapter,decimal-leading-zero);position:absolute;right:0;top:36px;
+  font-size:clamp(54px,6vw,96px);font-weight:500;line-height:.8;letter-spacing:-.07em;
+  color:rgba(9,9,9,.035);pointer-events:none;font-variant-numeric:tabular-nums
+}
+.page-distinctions .inquiry-stack{counter-reset:mmdist}
+.page-distinctions .inquiry{counter-increment:mmdist}
+.page-distinctions .inquiry:after{
+  content:counter(mmdist,decimal-leading-zero);position:absolute;right:0;top:42px;
+  font-size:15px;letter-spacing:.16em;color:rgba(9,9,9,.22);pointer-events:none;
+  font-variant-numeric:tabular-nums
+}
+.page-sources .inquiry-body a{
+  text-decoration-thickness:1px;text-underline-offset:4px;
+  transition:opacity .3s ease,text-underline-offset .3s ease
+}
+.page-sources .inquiry-body a:hover{opacity:.58;text-underline-offset:7px}
+.page-approach .approach-visual-copy{background:
+  linear-gradient(145deg,rgba(255,255,255,.025),transparent 42%),
+  #0b0b0b}
+.page-coaching .offer-meta>p:first-child{font-size:18px;letter-spacing:-.01em;color:#111}
+.page-resources .resource-card{min-height:300px}
+.page-about .actor-card{position:relative;overflow:hidden}
+.page-about .actor-card:after{
+  content:"";position:absolute;left:22px;bottom:20px;width:0;height:1px;background:#111;
+  transition:width .55s cubic-bezier(.16,1,.3,1)
+}
+@media(pointer:fine){.page-about .actor-card:hover:after{width:calc(100% - 44px)}}
+@media(max-width:900px){
+  .inquiry-body{padding-left:0;border-left:0}
+  .inquiry-label{position:static}
+  .page-explorations .inquiry:after{top:29px;font-size:44px}
+  .page-distinctions .inquiry:after{top:30px;font-size:12px}
+  .page-resources .resource-card{min-height:205px}
+}
