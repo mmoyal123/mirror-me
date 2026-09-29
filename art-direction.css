@@ -448,3 +448,14 @@ body:before{
 .page-sources .scene-counter{color:rgba(9,9,9,.44)}
 @media(max-width:1100px){.scene-counter{right:8px;opacity:.55}.scene-counter em{display:none}}
 @media(max-width:900px){.scene-counter{display:none!important}}
+
+/* Closing credits */
+.footer{
+  background:#090909!important;color:#f7f7f4!important;border-top-color:rgba(255,255,255,.22)!important
+}
+.footer:before{background:#f7f7f4!important;opacity:.7}
+.footer:after{color:rgba(255,255,255,.045)!important}
+.footer small{color:#8f8f8a!important}
+.footer a{color:#f7f7f4}
+.footer-grid{position:relative;z-index:1}
+.footer-grid>div{opacity:.9}
