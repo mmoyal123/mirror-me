@@ -424,3 +424,9 @@ body:before{
   .page-home .home-hero-inner:before{animation:none!important}
   .about-photo:before,.approach-visual-media:before{display:none!important}
 }
+
+@media(max-width:900px){
+  .page-home .site-header:has(.mobile-menu[open]){
+    background:rgba(247,247,244,.98);color:#090909;border-bottom-color:#111;backdrop-filter:blur(18px)
+  }
+}
