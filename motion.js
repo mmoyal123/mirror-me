@@ -93,6 +93,9 @@
   }
 
   const header = document.querySelector('.site-header');
+  const homeHero = document.querySelector('.home-hero');
+  const heroCopy = document.querySelector('.home-hero-copy');
+  const heroMeta = document.querySelector('.home-hero-meta');
   const parallaxImages = [...document.querySelectorAll('.home-hero img, .about-photo img, .approach-visual-media img')];
   let ticking = false;
 
@@ -104,6 +107,17 @@
     document.body.classList.toggle('has-scrolled', y > 90);
 
     if (!reduceMotion && window.innerWidth > 900) {
+      if (homeHero && heroCopy && y < window.innerHeight * 1.15) {
+        const hp = Math.min(1, y / (window.innerHeight * .82));
+        heroCopy.style.setProperty('--hero-copy-y', `${hp * -34}px`);
+        heroCopy.style.setProperty('--hero-copy-opacity', `${1 - hp * .42}`);
+        if (heroMeta) {
+          heroMeta.style.setProperty('--hero-meta-y', `${hp * -14}px`);
+          heroMeta.style.setProperty('--hero-meta-opacity', `${1 - hp * .58}`);
+        }
+        homeHero.style.setProperty('--hero-shade', `${.67 + hp * .08}`);
+      }
+
       parallaxImages.forEach(img => {
         const frame = img.parentElement.getBoundingClientRect();
         const vh = window.innerHeight;
