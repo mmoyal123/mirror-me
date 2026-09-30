@@ -615,6 +615,22 @@ body:before{
   .scene-current{transition:none!important}
 }
 
+/* A quiet route from the opening portrait to the actual sessions. */
+.home-hero-copy .hero-service-link{
+  display:inline-block;margin-top:22px;padding:4px 0 7px;
+  color:#fff;border-bottom:1px solid rgba(255,255,255,.72);
+  font-size:13px;line-height:1.35;letter-spacing:.08em;
+  text-decoration:none;text-transform:uppercase
+}
+.home-hero-copy .hero-service-link:hover{border-bottom-color:#fff}
+.about-reflection{margin-right:auto;margin-left:34%}
+@media(max-width:900px){
+  .home-hero-copy .hero-service-link{margin-top:16px;font-size:12px}
+  .about-reflection{margin-left:0}
+  .lens-card p,.resource-card p,.epistemic-card p{font-size:14px}
+  .footer small{font-size:12px}
+}
+
 
 /* Camera-depth scroll on the opening shot */
 @media(min-width:901px){
