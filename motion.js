@@ -88,6 +88,14 @@
       });
     }, { rootMargin: '0px 0px -9% 0px', threshold: 0.08 });
     revealEls.forEach(el => observer.observe(el));
+    // The title mask has no painted intersection until it opens. Reveal
+    // first-screen titles independently so the observer cannot deadlock them.
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.home-hero-copy h1, .page-hero h1').forEach(el => {
+        el.classList.add('is-visible');
+        observer.unobserve(el);
+      });
+    });
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
