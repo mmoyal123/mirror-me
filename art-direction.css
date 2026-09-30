@@ -614,3 +614,23 @@ body:before{
   .page-wipe{display:none!important}
   .scene-current{transition:none!important}
 }
+
+
+/* Camera-depth scroll on the opening shot */
+@media(min-width:901px){
+  .page-home .home-hero-copy{
+    transform:translate3d(0,var(--hero-copy-y,0),0);
+    opacity:var(--hero-copy-opacity,1);
+    will-change:transform,opacity
+  }
+  .page-home .home-hero-meta{
+    transform:translate3d(0,var(--hero-meta-y,0),0);
+    opacity:var(--hero-meta-opacity,.88);
+    will-change:transform,opacity
+  }
+  .page-home .home-hero:after{
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.03) 0%,rgba(0,0,0,.02) 35%,rgba(0,0,0,var(--hero-shade,.67)) 100%),
+      linear-gradient(90deg,rgba(0,0,0,.16),transparent 42%)
+  }
+}
