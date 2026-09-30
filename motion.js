@@ -32,6 +32,24 @@
   document.body.appendChild(progress);
   const progressBar = progress.firstElementChild;
 
+  const pageClassForSpine = [...document.body.classList].find(c => c.startsWith('page-'));
+  const spineLabels = {
+    'page-explorations': 'EXPLORATIONS / MIRROR ME',
+    'page-approach': 'APPROCHE / MIRROR ME',
+    'page-coaching': 'COACHING / MIRROR ME',
+    'page-about': 'MICKAËL MOYAL / MIRROR ME',
+    'page-resources': 'RESSOURCES / MIRROR ME',
+    'page-sources': 'SOURCES / MIRROR ME',
+    'page-distinctions': 'DISTINCTIONS / MIRROR ME'
+  };
+  if (spineLabels[pageClassForSpine] && window.innerWidth > 1100) {
+    const spine = document.createElement('div');
+    spine.className = 'editorial-spine';
+    spine.setAttribute('aria-hidden', 'true');
+    spine.innerHTML = '<span>' + spineLabels[pageClassForSpine] + '</span><i></i><em>PARIS</em>';
+    document.body.appendChild(spine);
+  }
+
   const revealSelectors = [
     '.home-hero-meta > *',
     '.home-hero-copy > *',
@@ -83,6 +101,7 @@
     const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     progressBar.style.transform = `scaleX(${Math.min(1, y / max)})`;
     if (header) header.classList.toggle('is-scrolled', y > 24);
+    document.body.classList.toggle('has-scrolled', y > 90);
 
     if (!reduceMotion && window.innerWidth > 900) {
       parallaxImages.forEach(img => {
@@ -141,7 +160,14 @@
           .sort((a,b) => Math.abs(a.boundingClientRect.top - innerHeight * .34) - Math.abs(b.boundingClientRect.top - innerHeight * .34))[0];
         if (visible) {
           const idx = scenes.indexOf(visible.target) + 1;
-          current.textContent = String(idx).padStart(2, '0');
+          const next = String(idx).padStart(2, '0');
+          if (current.textContent !== next) {
+            current.classList.add('is-changing');
+            window.setTimeout(() => {
+              current.textContent = next;
+              current.classList.remove('is-changing');
+            }, 110);
+          }
           rail.classList.add('is-active');
         }
       }, { rootMargin: '-18% 0px -52% 0px', threshold: 0 });
@@ -166,6 +192,32 @@
     document.querySelectorAll('.nav-links a, .mobile-panel a').forEach(link => {
       const href = link.getAttribute('href');
       if (href === currentPath) link.setAttribute('aria-current', 'page');
+    });
+  }
+
+
+  if (!reduceMotion) {
+    const wipe = document.createElement('div');
+    wipe.className = 'page-wipe';
+    wipe.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(wipe);
+
+    document.querySelectorAll('a[href]').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+        if (link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
+        let url;
+        try { url = new URL(link.href, location.href); } catch (_) { return; }
+        if (url.origin !== location.origin) return;
+        if (url.pathname === location.pathname && url.hash) return;
+
+        e.preventDefault();
+        document.body.classList.add('page-is-leaving');
+        wipe.classList.add('is-active');
+        window.setTimeout(() => { location.href = url.href; }, 310);
+      });
     });
   }
 
