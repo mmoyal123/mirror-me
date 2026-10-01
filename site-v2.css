@@ -223,3 +223,19 @@ a{color:inherit}a:focus-visible,summary:focus-visible{outline:2px solid currentC
   html{scroll-behavior:auto}
   .explore-card{transition:none}
 }
+
+.page-coaching .coaching-intro-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,5vw,84px);align-items:start}
+.page-coaching .coaching-intro-grid .prose{max-width:680px;margin:0}
+.page-coaching .coaching-portrait{margin:0;overflow:hidden;background:#171717;aspect-ratio:4/5}
+.page-coaching .coaching-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:saturate(.55) contrast(1.04)}
+@media(max-width:900px){
+  .page-coaching .coaching-intro-grid{grid-template-columns:1fr;gap:30px}
+  .page-coaching .coaching-intro-grid .prose{order:0}
+  .page-coaching .coaching-portrait{order:1;aspect-ratio:4/3}
+  .page-coaching .coaching-portrait img{object-position:center 8%}
+}
+
+.page-explorations .explorations-hero>.wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(32px,5vw,80px);align-items:center}
+.page-explorations .explorations-portrait{margin:0;aspect-ratio:4/5;overflow:hidden;background:#222}
+.page-explorations .explorations-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+@media(max-width:900px){.page-explorations .explorations-hero>.wrap{grid-template-columns:1fr;gap:32px}.page-explorations .explorations-portrait{width:100%;max-width:440px;aspect-ratio:1;justify-self:center}.page-explorations .explorations-portrait img{object-position:center 32%}}
