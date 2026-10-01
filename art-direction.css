@@ -650,3 +650,13 @@ body:before{
       linear-gradient(90deg,rgba(0,0,0,.16),transparent 42%)
   }
 }
+
+
+/* Desktop hero face-safe crop — 2026-10-01 */
+@media(min-width:901px){
+  .page-home .home-hero img{
+    object-position:center 12%;
+    animation:none;
+    scale:1.01;
+  }
+}
