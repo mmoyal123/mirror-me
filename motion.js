@@ -36,6 +36,7 @@
     if (openingFilm && !filmSeen) {
       const video = openingFilm.querySelector('.mm-opening-film-video');
       const startButton = openingFilm.querySelector('.mm-opening-film-start');
+      const skipButton = openingFilm.querySelector('.mm-opening-film-skip');
       let finished = false;
       document.body.classList.add('intro-lock');
 
@@ -75,6 +76,9 @@
       }
       if (startButton) {
         startButton.addEventListener('click', playWithSound);
+      }
+      if (skipButton) {
+        skipButton.addEventListener('click', finishFilm);
       }
 
       requestAnimationFrame(playWithSound);
