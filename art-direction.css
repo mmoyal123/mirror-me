@@ -235,6 +235,13 @@ body:before{
   cursor:pointer
 }
 .mm-opening-film-start:hover{background:rgba(255,255,255,.1)}
+.mm-opening-film-skip{
+  position:absolute;right:max(24px,3vw);top:max(24px,3vw);z-index:2;
+  padding:8px 0;border:0;background:transparent;color:rgba(255,255,255,.72);
+  font:600 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.18em;text-transform:uppercase;
+  cursor:pointer;transition:color .28s ease,opacity .28s ease
+}
+.mm-opening-film-skip:hover{color:#fff}
 .mm-opening-film.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
 @media(max-width:900px){
   .mm-opening-film-start{bottom:max(28px,4vh)}
