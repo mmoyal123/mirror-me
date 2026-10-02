@@ -4,24 +4,89 @@
   root.classList.add('motion-ready');
 
   const home = document.body.classList.contains('page-home');
-  if (home && !reduceMotion) {
+  const openingFilm = document.querySelector('.mm-opening-film');
+
+  const playSignatureIntro = (force = false) => {
     let seen = false;
     try { seen = sessionStorage.getItem('mmIntroSeen') === '1'; } catch (_) {}
-    if (!seen) {
-      const intro = document.createElement('div');
-      intro.className = 'mm-intro';
-      intro.setAttribute('aria-hidden', 'true');
-      intro.innerHTML = '<div class="mm-intro-word">MIRROR ME</div><span class="mm-intro-rule"></span>';
-      document.body.prepend(intro);
-      document.body.classList.add('intro-lock');
-      requestAnimationFrame(() => intro.classList.add('is-active'));
-      window.setTimeout(() => intro.classList.add('is-leaving'), 820);
-      window.setTimeout(() => {
-        intro.remove();
-        document.body.classList.remove('intro-lock');
-      }, 1420);
-      try { sessionStorage.setItem('mmIntroSeen', '1'); } catch (_) {}
+    if (seen && !force) {
+      document.body.classList.remove('intro-lock');
+      return;
     }
+
+    const intro = document.createElement('div');
+    intro.className = 'mm-intro';
+    intro.setAttribute('aria-hidden', 'true');
+    intro.innerHTML = '<div class="mm-intro-word">MIRROR ME</div><span class="mm-intro-rule"></span>';
+    document.body.prepend(intro);
+    document.body.classList.add('intro-lock');
+    requestAnimationFrame(() => intro.classList.add('is-active'));
+    window.setTimeout(() => intro.classList.add('is-leaving'), 820);
+    window.setTimeout(() => {
+      intro.remove();
+      document.body.classList.remove('intro-lock');
+    }, 1420);
+    try { sessionStorage.setItem('mmIntroSeen', '1'); } catch (_) {}
+  };
+
+  if (home && !reduceMotion) {
+    let filmSeen = false;
+    try { filmSeen = sessionStorage.getItem('mmOpeningFilmSeen') === '1'; } catch (_) {}
+
+    if (openingFilm && !filmSeen) {
+      const video = openingFilm.querySelector('.mm-opening-film-video');
+      const startButton = openingFilm.querySelector('.mm-opening-film-start');
+      let finished = false;
+      document.body.classList.add('intro-lock');
+
+      const finishFilm = () => {
+        if (finished) return;
+        finished = true;
+        try { sessionStorage.setItem('mmOpeningFilmSeen', '1'); } catch (_) {}
+        playSignatureIntro(true);
+        openingFilm.classList.add('is-leaving');
+        window.setTimeout(() => openingFilm.remove(), 560);
+      };
+
+      const showSoundGate = () => {
+        openingFilm.classList.add('needs-gesture');
+        if (startButton) startButton.hidden = false;
+      };
+
+      const playWithSound = () => {
+        if (!video) {
+          finishFilm();
+          return;
+        }
+        video.muted = false;
+        video.volume = 1;
+        const playback = video.play();
+        if (playback && typeof playback.then === 'function') {
+          playback.then(() => {
+            openingFilm.classList.remove('needs-gesture');
+            if (startButton) startButton.hidden = true;
+          }).catch(showSoundGate);
+        }
+      };
+
+      if (video) {
+        video.addEventListener('ended', finishFilm, { once: true });
+        video.addEventListener('error', finishFilm, { once: true });
+      }
+      if (startButton) {
+        startButton.addEventListener('click', playWithSound);
+      }
+
+      requestAnimationFrame(playWithSound);
+      window.setTimeout(() => {
+        if (!finished && video && video.paused) showSoundGate();
+      }, 900);
+    } else {
+      if (openingFilm) openingFilm.remove();
+      playSignatureIntro(false);
+    }
+  } else {
+    if (openingFilm) openingFilm.remove();
   }
 
 
