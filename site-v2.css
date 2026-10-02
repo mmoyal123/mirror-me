@@ -324,3 +324,9 @@ a{color:inherit}a:focus-visible,summary:focus-visible{outline:2px solid currentC
   .identity-cycle .cycle-link{stroke-dashoffset:0}
   .identity-cycle .cycle-step,.identity-cycle .cycle-center{opacity:1}
 }
+
+
+/* Homepage philosophical citation */
+.home-hero-copy .hero-citation{margin-top:12px;max-width:680px;font-size:12px;line-height:1.35;letter-spacing:.04em;opacity:.72}
+.home-hero-copy .hero-citation cite{font-style:italic}
+@media(max-width:900px){.home-hero-copy .hero-citation{margin-top:10px;max-width:325px;font-size:11px}}
