@@ -235,10 +235,8 @@ a{color:inherit}a:focus-visible,summary:focus-visible{outline:2px solid currentC
   .page-coaching .coaching-portrait img{object-position:center}
 }
 
-.page-explorations .explorations-hero>.wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(32px,5vw,80px);align-items:center}
-.page-explorations .explorations-portrait{margin:0;aspect-ratio:4/5;overflow:hidden;background:#222}
-.page-explorations .explorations-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-@media(max-width:900px){.page-explorations .explorations-hero>.wrap{grid-template-columns:1fr;gap:32px}.page-explorations .explorations-portrait{width:100%;max-width:440px;aspect-ratio:1;justify-self:center}.page-explorations .explorations-portrait img{object-position:center 32%}}
+.page-explorations .explorations-hero>.wrap{display:block}
+.page-explorations .explorations-hero-copy{max-width:920px}
 
 .page-resources .autonomy-resource-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
 .page-resources .autonomy-triptych{margin:0;max-width:620px}
